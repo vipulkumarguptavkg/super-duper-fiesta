@@ -1,0 +1,3377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=650, initial-scale=1">
+    <title>Apex Public School | Professional Portal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+--school-navy: #004282;
+‎            --btn-blue: #0056b3;
+‎            --ai-purple: #8e44ad;
+‎            --text-gray: #475569;
+‎            --brand-blue: #1e40af; 
+‎            --brand-gold: #facc15;
+‎            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+background-color: #f8fafc;
+‎            overflow-x: hidden;
+‎            width: 100%;
+        }
+#home-section {
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(244, 114, 182, 0.05) 0%, transparent 50%),
+        #ffffff;
+}
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Pushes brand to left and nav to right */
+            padding: 12px 5%;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .brand-section { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            flex-shrink: 0;
+            margin-right: 40px; 
+        }
+        
+        .logo-img { height: 60px; width: auto; transition: var(--transition); }
+
+        .school-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--school-navy);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .school-address {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .nav-menu { display: flex; list-style: none; gap: 10px; margin: 0; padding: 0; align-items: center; }
+
+        .nav-tab {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-tab i { color: var(--school-navy); }
+        .nav-tab:hover { background-color: #f0f7ff; color: var(--btn-blue); }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--school-navy) 0%, #0072ff 100%);
+            color: white !important;
+        }
+        .nav-tab.active i { color: white !important; }
+
+        .login-btn {
+            background-color: var(--school-navy) !important;
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 6px;
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(0, 66, 130, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 66, 130, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 66, 130, 0); }
+        }
+
+        #content-wrapper { width: 100%; }
+        .page-section { display: none; width: 100%; }
+        .active-content { display: block; }
+
+        .fade-in { animation: fadeIn 1.2s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+.hero-interaction-row {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px; 
+}
+.btn-location-sm {
+    background: #0066ff;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+    text-decoration: none;
+}
+.campus-image-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+@media (max-width: 600px) {
+    .hero-interaction-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: 1200px;    
+  margin-left: auto;
+  margin-right: auto;  
+  padding: 0 15px;       
+  box-sizing: border-box; 
+}
+    </style>
+    <style>
+    @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+        animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .captcha-refresh:hover i {
+        animation: spin 0.5s ease-in-out;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+    header {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  text-align: center;
+}
+ 
+.gateway-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a3c8a; 
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  text-transform: capitalize;
+  margin-top: 15px;
+  max-width: 80%; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gateway-text {
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes goldPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 1;
+        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+    }
+    50% { 
+        transform: scale(1.25); 
+        opacity: 0.8;
+        filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
+    }
+}
+
+@keyframes goldRotatePulse {
+    0% { 
+        transform: scale(1) rotate(0deg); 
+        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+    }
+    50% { 
+        transform: scale(1.3) rotate(180deg); 
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+    }
+    100% { 
+        transform: scale(1) rotate(360deg); 
+        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+    }
+}
+
+.review-container {
+    max-width: 650px;
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff9e6;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+}
+
+.stars { color: #ffb800; letter-spacing: 2px; }
+.rating-text { font-weight: 600; color: #444; font-size: 0.9rem; }
+
+.review-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #1a2b49;
+    font-weight: 500;
+    margin-bottom: 20px;
+    min-height: 100px;
+    transition: opacity 0.5s ease;
+}
+
+.reviewer-name {
+    display: block;
+    font-weight: 700;
+    color: #6366f1; 
+    font-size: 1.1rem;
+}
+
+.verified-tag {
+    font-size: 0.75rem;
+    color: #10b981;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timer-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #eee;
+}
+
+.timer-bar {
+    height: 100%;
+    background: #6366f1;
+    width: 0%;
+}
+
+.fade-out { opacity: 0; }
+
+.contact-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+     margin-top: 0px; 
+‎    margin-bottom: 0px; 
+‎}
+‎
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+.address-card { background: linear-gradient(145deg, #ffffff, #f0f7ff); }
+.contact-number-card { background: linear-gradient(145deg, #ffffff, #fff0f7); }
+.email-card { background: linear-gradient(145deg, #ffffff, #fffdf0); }
+.consultation-card { background: linear-gradient(145deg, #ffffff, #f0fff4); }
+
+.card-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.card-detail {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.button-group {
+    margin-top: 0px;
+}
+
+.main-location-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #0061ff 0%, #0047c2 100%);
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0, 97, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-location-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 97, 255, 0.4);
+    background: linear-gradient(135deg, #0072ff 0%, #0059ff 100%);
+}
+
+.main-location-btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.main-location-btn:hover .btn-icon {
+    transform: rotate(15deg) scale(1.1);
+}
+.stat-badge {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3); 
+    z-index: 10;
+    overflow: hidden;
+}
+
+.stat-icon-container {
+    background: #fffdf0; 
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-number {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+    line-height: 1;
+}
+
+.stat-text {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 4px 0 0 0;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.shimmer-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 150%; }
+}
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tabs = document.querySelectorAll('.nav-tab');
+    const allPages = document.querySelectorAll('.page-section');
+
+    const savedTarget = localStorage.getItem('apexCurrentPage') || 'home-section';
+    showPage(savedTarget);
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            const targetId = this.getAttribute('data-target');
+            
+            localStorage.setItem('apexCurrentPage', targetId);
+            showPage(targetId);
+            
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    function showPage(targetId) {
+        tabs.forEach(t => t.classList.remove('active'));
+        const activeTab = document.querySelector(`[data-target="${targetId}"]`);
+        if (activeTab) activeTab.classList.add('active');
+
+        allPages.forEach(page => {
+            page.style.display = 'none';
+            page.classList.remove('active-content');
+        });
+
+        const targetPage = document.getElementById(targetId);
+        if (targetPage) {
+            targetPage.style.display = 'block';
+            setTimeout(() => {
+                targetPage.classList.add('active-content');
+            }, 10);
+        }
+    }
+});
+</script>
+</head>
+<body class="page-wrapper">
+    <header class="navbar">
+        <div class="brand-section">
+            <img src="https://yt3.ggpht.com/WeoI_Eui0SZPWQ4BTXtrx56Ca7wPTBVrJRiG7zOSDWHLUp_n1N24aBJmQBs1oBF-IGn5MhDv6gRzlH0=s400-rw-nd-v1" alt="Apex Logo" class="logo-img">
+            <div class="brand-text">
+                <h1 class="school-name">Apex Public School</h1>
+                <span class="school-address">Dhrubgama Kalyanpur Samastipur</span>
+            </div>
+        </div>  <nav>
+            <ul class="nav-menu">
+                <li><a class="nav-tab active" data-target="home-section"><i class="fas fa-house"></i> Home</a></li>
+                <li><a class="nav-tab" data-target="about-section"><i class="fas fa-users"></i> About Us</a></li>
+                <li><a class="nav-tab" data-target="academics-section"><i class="fas fa-graduation-cap"></i> Academics</a></li>
+                <li><a class="nav-tab" data-target="admission-section"><i class="fas fa-user-plus"></i> Admission</a></li>
+                 <li><a class="nav-tab" data-target="login-section"><i class="fas fa-user-circle"></i>Login </a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <div id="content-wrapper">
+<main id="home-section" class="page-section active-content fade-in">
+    <header class="bg-white pt-0 pb-2 border-b-8 border-yellow-400">
+        <div class="container mx-auto px-4 text-center">
+            <img src="https://theschoolashram.com/ashram_api/storage/app/public/igODMSt66C.jpg" alt="Logo" class="mx-auto w-32 h-32 mb-6 drop-shadow-lg">
+            <h1 class="text-4xl md:text-5xl font-black text-blue-800 uppercase mb-2">APEX PUBLIC SCHOOL</h1>
+            <p class="text-lg md:text-xl text-blue-600 font-bold tracking-widest uppercase">Dhrubgama, Kalyanpur, Samastipur</p>
+        </div>
+        <div class="bg-yellow-400 py-2 overflow-hidden border-b border-yellow-500">
+            <div class="max-w-7xl mx-auto px-4 flex">
+                <span class="bg-red-600 text-white px-3 py-1 text-xs font-black uppercase rounded mr-4 flex-shrink-0">Updates</span>
+                <marquee class="text-sm font-bold text-blue-900 pt-1" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                    • Admissions Open for Academic Session 2026-27 • Admission Now • Make Your Child Future Bright 
+                </marquee>
+            </div>
+        </div>
+        <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100]">
+            <a href="https://wa.me/919939260307" target="_blank" class="w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
+                <i class="fab fa-whatsapp text-3xl"></i>
+            </a>
+            <button onclick="switchPage('admission')" class="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-blue-800 transition-all">
+                <i class="fas fa-edit"></i> <span class="hidden md:inline">Admission Enquiry</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="flex flex-col items-center justify-center pt-2 pb-2">
+        <p class="gateway-text text-center mb-4">
+            Start Your Children Journey With Best and Smart SCHOOL 
+        </p>
+    </section>
+<section class="py-24 bg-[#050a18] relative overflow-hidden border-t border-[#c5a059]/20">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900 rounded-full blur-[150px] opacity-20"></div>
+        <div class="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-[#c5a059] rounded-full blur-[120px] opacity-5"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="flex flex-col items-center mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                    <span class="text-[#c5a059] font-serif italic text-sm tracking-[0.4em] uppercase">Voice of Excellence</span>
+                    <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+                </div>
+                
+                <div class="flex items-center gap-8">
+                    <div class="text-right">
+                        <div class="flex gap-1 justify-end mb-2">
+                            <i class="fas fa-star text-[#c5a059] text-xs"></i>
+                            <i class="fas fa-star text-[#c5a059] text-xs"></i>
+                            <i class="fas fa-star text-[#c5a059] text-xs"></i>
+                            <i class="fas fa-star text-[#c5a059] text-xs"></i>
+                            <i class="fas fa-star text-[#c5a059] text-xs"></i>
+                        </div>
+                        <p class="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Google Verified</p>
+                    </div>
+                    <div class="h-14 w-[1px] bg-gradient-to-b from-transparent via-[#c5a059]/40 to-transparent"></div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-7xl font-serif text-white tracking-tighter leading-none">4.9</span>
+                        <span class="text-[#c5a059] font-serif italic text-xs leading-tight opacity-70">Average<br>Distinction</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <span class="absolute -top-24 -left-12 text-[22rem] text-white/[0.03] font-serif select-none pointer-events-none z-0">“</span>
+                
+                <div class="bg-white/[0.02] backdrop-blur-2xl rounded-[4rem] p-12 md:p-24 shadow-[0_40px_100px_rgba(0,0,0,0.4)] border border-[#c5a059]/20 relative z-10 overflow-hidden">
+                    
+                    <div id="review-content" class="text-center">
+                        <p id="review-text" class="text-3xl md:text-5xl text-slate-100 leading-tight font-serif italic transition-all duration-1000 opacity-100 transform translate-y-0">
+                            "The smartest and best school in Samastipur District that we've ever used. It truly simplifies the journey for students."
+                        </p>
+                        
+                        <div class="mt-20 flex flex-col items-center">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div class="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                                <div class="relative">
+                                    <div class="w-10 h-10 border border-[#c5a059]/30 rounded-full animate-spin-slow"></div>
+                                    <i class="fas fa-crown absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#c5a059] text-sm"></i>
+                                </div>
+                                <div class="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+                            </div>
+                            
+                            <h4 id="reviewer-name" class="text-white font-serif text-3xl tracking-wide transition-all duration-1000 opacity-100">
+                                Apex Public School
+                            </h4>
+                            <p class="text-[#c5a059] text-[10px] font-black uppercase tracking-[0.4em] mt-3 opacity-60">Verified Community Pillar</p>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 w-full flex gap-3 px-8 pb-4">
+                        <div class="h-[2px] flex-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-fill h-full bg-gradient-to-r from-[#8a6d3b] via-[#c5a059] to-[#f3e2b3] w-0 shadow-[0_0_10px_#c5a059]"></div>
+                        </div>
+                        <div class="h-[2px] flex-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-fill h-full bg-gradient-to-r from-[#8a6d3b] via-[#c5a059] to-[#f3e2b3] w-0 shadow-[0_0_10px_#c5a059]"></div>
+                        </div>
+                        <div class="h-[2px] flex-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-fill h-full bg-gradient-to-r from-[#8a6d3b] via-[#c5a059] to-[#f3e2b3] w-0 shadow-[0_0_10px_#c5a059]"></div>
+                        </div>
+                        <div class="h-[2px] flex-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="progress-fill h-full bg-gradient-to-r from-[#8a6d3b] via-[#c5a059] to-[#f3e2b3] w-0 shadow-[0_0_10px_#c5a059]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+</style>
+
+<script>
+const reviews = [
+    { text: '"The smartest and best school in Samastipur District that we\'ve ever used. It truly simplifies the journey for students."', name: "Apex Public School" },
+    { text: '"Excellent faculty, great infrastructure, and a very positive learning atmosphere for the future leaders."', name: "Anurag Agarwal" },
+    { text: '"A premier institution that prioritizes both character building and academic excellence in Bihar."', name: "Vipul Gupta" },
+    { text: '"Best CBSE school in whole Kalyanpur, Samastipur for holistic development from Nursery to 10th."', name: "Vivek Bindhra" }
+];
+
+let currentIndex = 0;
+const duration = 5000; 
+let intervalId = null;
+
+function animateReview(index) {
+    const textEl = document.getElementById('review-text');
+    const nameEl = document.getElementById('reviewer-name');
+    const fills = document.querySelectorAll('.progress-fill');
+
+    // 1. Precise Bar Management
+    fills.forEach((fill, i) => {
+        fill.style.transition = 'none';
+        if (i < index) fill.style.width = '100%';
+        else if (i > index) fill.style.width = '0%';
+    });
+
+    // 2. Cinematic Text Transition
+    textEl.style.opacity = '0';
+    textEl.style.transform = 'translateY(20px) scale(0.98)';
+    textEl.style.filter = 'blur(10px)';
+    
+    nameEl.style.opacity = '0';
+    nameEl.style.letterSpacing = '0.5em';
+
+    setTimeout(() => {
+        textEl.textContent = reviews[index].text;
+        nameEl.textContent = reviews[index].name;
+        
+        textEl.style.opacity = '1';
+        textEl.style.transform = 'translateY(0) scale(1)';
+        textEl.style.filter = 'blur(0)';
+        
+        nameEl.style.opacity = '1';
+        nameEl.style.letterSpacing = '0.1em';
+
+        // 3. Smooth Linear Progress
+        setTimeout(() => {
+            const currentBar = fills[index];
+            currentBar.style.transition = `width ${duration}ms linear`;
+            currentBar.style.width = '100%';
+        }, 50);
+    }, 800);
+}
+
+function nextReview() {
+    currentIndex = (currentIndex + 1) % reviews.length;
+    animateReview(currentIndex);
+}
+
+const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        if (!intervalId) {
+            animateReview(currentIndex);
+            intervalId = setInterval(nextReview, duration + 1000);
+        }
+    } else {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+}, { threshold: 0.5 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    observer.observe(document.querySelector('#review-content'));
+});
+</script>
+
+
+<section class="relative w-full bg-[#050a18] py-20 overflow-hidden border-t border-b border-[#c5a059]/20">
+    
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0 opacity-[0.03]" 
+             style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 30-30 30L0 30z\' fill=\'%23c5a059\'/%3E%3C/svg%3E');">
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#c5a059] rounded-full blur-[160px] opacity-10"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        
+        <div class="flex items-center justify-center gap-4 mb-12">
+            <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+            <span class="text-[#c5a059] font-serif italic text-sm tracking-[0.4em] uppercase">The Sanctuary of Learning</span>
+            <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+        </div>
+
+        <div class="relative group">
+            
+            <div class="absolute -top-4 -left-4 w-16 h-16 border-t-2 border-l-2 border-[#c5a059]/40 rounded-tl-3xl transition-all duration-700 group-hover:-top-6 group-hover:-left-6"></div>
+            <div class="absolute -bottom-4 -right-4 w-16 h-16 border-b-2 border-r-2 border-[#c5a059]/40 rounded-br-3xl transition-all duration-700 group-hover:-bottom-6 group-hover:-right-6"></div>
+
+            <div class="relative overflow-hidden rounded-[2.5rem] border-[1px] border-[#c5a059]/30 shadow-[0_40px_100px_rgba(0,0,0,0.6)] bg-[#0a1229]">
+                
+                <div class="absolute inset-4 border border-[#c5a059]/10 rounded-[2rem] z-20 pointer-events-none"></div>
+
+                <img src="https://yt3.ggpht.com/gpDvBndXUiAXhchahED3KwEfxMQAW5BNwVzjE3zn1lIISbQFMZFXOPoCTCufJOdDBMTUjH5xiPMW=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" 
+                     alt="Campus Excellence" 
+                     class="w-full h-auto object-cover transform transition-transform duration-[2000ms] group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050a18]/60 via-transparent to-transparent opacity-60"></div>
+            </div>
+
+            <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#0a1229] border border-[#c5a059]/40 px-8 py-3 rounded-full shadow-2xl backdrop-blur-md z-30">
+                <p class="text-white font-serif italic text-xs tracking-widest whitespace-nowrap">
+                    Where <span class="text-[#c5a059]">Architecture</span> meets <span class="text-[#c5a059]">Aspiration</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="relative py-32 bg-[#050a18] overflow-hidden border-t border-b border-[#c5a059]/30">
+    
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0 opacity-[0.03] z-0" 
+             style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 30-30 30L0 30z\' fill=\'%23c5a059\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+        </div>
+        <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-900 rounded-full blur-[150px] opacity-20"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#c5a059] rounded-full blur-[150px] opacity-10"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-20 max-w-7xl mx-auto">
+            
+            <div class="w-full lg:w-5/12 relative">
+                <div class="relative z-10 group">
+                    <div class="absolute -inset-4 border border-[#c5a059]/20 rounded-[3rem] -z-10 transition-transform group-hover:scale-105 duration-700"></div>
+                    <div class="absolute -inset-8 border border-[#c5a059]/10 rounded-[3.5rem] -z-10 transition-transform group-hover:scale-110 duration-1000"></div>
+                    
+                    <div class="relative overflow-hidden rounded-[2.5rem] border-2 border-[#c5a059]/30 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
+                        <img src="" 
+                             alt="Principal Mr. Rajeev Kumar Singh" 
+                             class="w-full h-[600px] object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#050a18] via-transparent to-transparent opacity-60"></div>
+                    </div>
+                    
+                    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[85%] bg-[#0a1229] border border-[#c5a059]/40 p-8 rounded-2xl shadow-2xl backdrop-blur-md">
+                        <div class="flex flex-col items-center text-center">
+                            <h4 class="text-white font-serif text-3xl tracking-wide mb-1">Mr. Rajeev Kumar Singh</h4>
+                            <div class="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#c5a059] to-transparent mb-3"></div>
+                            <p class="text-[#c5a059] text-xs font-serif italic tracking-[0.2em] uppercase">Principal & Academic Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-7/12 mt-16 lg:mt-0">
+                <div class="space-y-10">
+                    <div class="flex items-center gap-4">
+                        <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                        <span class="text-[#c5a059] font-serif italic text-lg tracking-widest uppercase">The Visionary Desk</span>
+                    </div>
+
+                    <h2 class="text-5xl md:text-7xl font-serif text-white leading-[1.1] tracking-tight">
+                        Architecting the <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-b from-[#f3e2b3] via-[#c5a059] to-[#8a6d3b]">Legacy of Wisdom</span>
+                    </h2>
+
+                    <div class="relative pt-6">
+                        <i class="fas fa-quote-left text-5xl text-[#c5a059]/20 absolute -top-4 -left-6"></i>
+                        <div class="space-y-8 relative z-10">
+                            <p class="text-2xl text-slate-200 font-light leading-relaxed italic border-l-2 border-[#c5a059]/40 pl-8">
+                                "At Apex Public School, we believe that education is not just about filling a bucket, but lighting a fire. Our mission is to provide an environment where students feel safe to explore, fail, and ultimately succeed."
+                            </p>
+                            
+                            <p class="text-lg text-slate-400 font-light leading-loose pl-8 tracking-wide">
+                                We integrate modern technology with traditional values, ensuring that our students are globally competitive yet deeply rooted in our culture. Together, we are building a legacy of excellence that spans over two decades of transformative education.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between pt-12 border-t border-[#c5a059]/20 gap-8">
+                        <div class="flex items-center gap-6">
+                            <div class="relative">
+                                <div class="w-16 h-16 border border-[#c5a059]/30 rounded-full animate-spin-slow"></div>
+                                <i class="fas fa-crown absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#c5a059] text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-white font-serif text-lg tracking-wider">Apex Academic Council</p>
+                                <p class="text-[#c5a059] text-[10px] font-bold uppercase tracking-[0.3em]">Excellence Certified</p>
+                            </div>
+                        </div>
+                        
+                        <a href="content://com.google.android.apps.nbu.files.provider/2/1000070645" class="group relative px-10 py-4 overflow-hidden rounded-full border border-[#c5a059]/50 transition-all duration-500">
+                            <div class="absolute inset-0 bg-[#c5a059] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                            <span class="relative z-10 text-[#c5a059] group-hover:text-[#050a18] font-bold text-xs uppercase tracking-widest flex items-center gap-3">
+                                Read Full Vision <i class="fas fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow { animation: spin-slow 15s linear infinite; }
+    
+    /* Elegant Font Implementation Suggestion:
+       Use 'Playfair Display' or 'Cinzel' for the Serif parts in your CSS */
+</style>
+
+
+<section class="mt-24 mb-24 relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="group relative bg-[#0a1229] p-10 rounded-[2.5rem] text-center border border-[#c5a059]/30 transition-all duration-500 hover:-translate-y-3 hover:border-[#c5a059] shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+                <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-[#c5a059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10">
+                    <div class="text-[#c5a059] text-5xl mb-4 group-hover:scale-110 transition-transform duration-500"><i class="fas fa-medal"></i></div>
+                    <h2 class="text-4xl font-serif text-white tracking-tight">25+ Year</h2>
+                    <div class="flex items-center justify-center gap-3 my-4">
+                        <div class="h-[1px] w-10 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                        <i class="fas fa-shield-alt text-[#c5a059] text-[10px]"></i>
+                        <div class="h-[1px] w-10 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+                    </div>
+                    <p class="text-[#c5a059] uppercase text-[10px] font-black tracking-[0.3em]">Legacy of Excellence</p>
+                </div>
+            </div>
+
+            <div class="group relative bg-[#0a1229] p-10 rounded-[2.5rem] text-center border border-[#c5a059]/30 transition-all duration-500 hover:-translate-y-3 hover:border-[#c5a059] shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+                <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-[#c5a059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10">
+                    <div class="text-[#c5a059] text-5xl mb-4 group-hover:scale-110 transition-transform duration-500"><i class="fas fa-users"></i></div>
+                    <h2 class="text-4xl font-serif text-white tracking-tight">1000+</h2>
+                    <div class="flex items-center justify-center gap-3 my-4">
+                        <div class="h-[1px] w-10 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                        <i class="fas fa-star text-[#c5a059] text-[10px]"></i>
+                        <div class="h-[1px] w-10 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+                    </div>
+                    <p class="text-[#c5a059] uppercase text-[10px] font-black tracking-[0.3em]">Brilliant Minds</p>
+                </div>
+            </div>
+
+            <div class="group relative bg-[#0a1229] p-10 rounded-[2.5rem] text-center border border-[#c5a059]/30 transition-all duration-500 hover:-translate-y-3 hover:border-[#c5a059] shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+                <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-[#c5a059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10">
+                    <div class="text-[#c5a059] text-5xl mb-4 group-hover:scale-110 transition-transform duration-500"><i class="fas fa-user-tie"></i></div>
+                    <h2 class="text-4xl font-serif text-white tracking-tight">50+</h2>
+                    <div class="flex items-center justify-center gap-3 my-4">
+                        <div class="h-[1px] w-10 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                        <i class="fas fa-feather-alt text-[#c5a059] text-[10px]"></i>
+                        <div class="h-[1px] w-10 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+                    </div>
+                    <p class="text-[#c5a059] uppercase text-[10px] font-black tracking-[0.3em]">Elite Educators</p>
+                </div>
+            </div>
+
+            <div class="group relative bg-[#0a1229] p-10 rounded-[2.5rem] text-center border border-[#c5a059]/30 transition-all duration-500 hover:-translate-y-3 hover:border-[#c5a059] shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+                <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-[#c5a059]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="relative z-10">
+                    <div class="text-[#c5a059] text-5xl mb-4 group-hover:scale-110 transition-transform duration-500"><i class="fas fa-graduation-cap"></i></div>
+                    <h2 class="text-4xl font-serif text-white tracking-tight">100%</h2>
+                    <div class="flex items-center justify-center gap-3 my-4">
+                        <div class="h-[1px] w-10 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                        <i class="fas fa-crown text-[#c5a059] text-[10px]"></i>
+                        <div class="h-[1px] w-10 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+                    </div>
+                    <p class="text-[#c5a059] uppercase text-[10px] font-black tracking-[0.3em]">Success Outcome</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <section class="py-24 bg-[#fcfcfd] font-sans overflow-hidden">
+    <div class="container mx-auto px-4">
+        
+        <div class="text-center mb-16">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <span class="text-blue-600 font-black text-xs uppercase tracking-[0.4em] italic">Let's Read</span>
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-10 leading-tight">
+                Why Should You Choose <br>
+                <div class="mt-4">
+                    <span id="textSwitcher" class="inline-block px-10 py-4 bg-blue-600 text-white rounded-full transition-all duration-300 shadow-2xl shadow-blue-200 min-w-[320px] text-2xl md:text-3xl">
+                        Apex Public School
+                    </span>
+                </div>
+            </h2>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto overflow-hidden">
+            <div id="cardFlow" class="flex gap-8 transition-transform duration-600 ease-[cubic-bezier(0.45, 0.05, 0.55, 0.95)]">
+                
+                <div class="min-w-[100%] md:min-w-[500px] bg-[#fff5f0] border border-orange-100 p-12 rounded-[3rem] relative shadow-sm">
+                    <div class="absolute top-8 right-10 text-orange-200 text-6xl opacity-40">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-2xl font-black text-slate-900 mb-2">Gramin Shiksha Niketan</h4>
+                        <p class="text-sm font-black text-orange-600 uppercase tracking-widest mb-6">Dhrubgama, Samastipur</p>
+                        <p class="text-slate-600 text-lg font-medium leading-relaxed italic">
+                            "Apex helped us go paperless and streamlined our entire academic management system."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="min-w-[100%] md:min-w-[500px] bg-[#f0f7ff] border border-blue-100 p-12 rounded-[3rem] relative shadow-sm">
+                    <div class="absolute top-8 right-10 text-blue-200 text-6xl opacity-40">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-2xl font-black text-slate-900 mb-2">Progressive Schooling</h4>
+                        <p class="text-sm font-black text-blue-600 uppercase tracking-widest mb-6">Kalyanpur, Bihar</p>
+                        <p class="text-slate-600 text-lg font-medium leading-relaxed italic">
+                            "Modern tools have made leadership smoother — allowing us to focus more on student growth."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="min-w-[100%] md:min-w-[500px] bg-[#f0fff4] border border-green-100 p-12 rounded-[3rem] relative shadow-sm">
+                    <div class="absolute top-8 right-10 text-green-200 text-6xl opacity-40">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-2xl font-black text-slate-900 mb-2">City Central School</h4>
+                        <p class="text-sm font-black text-green-600 uppercase tracking-widest mb-6">Apex Excellence</p>
+                        <p class="text-slate-600 text-lg font-medium leading-relaxed italic">
+                            "We've seen a noticeable improvement in how quickly our staff can resolve student needs."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 bg-blue-700 rounded-[3rem] py-12 px-6 flex flex-col md:flex-row items-center justify-around gap-8 text-center text-white shadow-2xl">
+            <div>
+                <h3 class="text-5xl font-black mb-1">10k+</h3>
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-200">Student Trained</p>
+            </div>
+            <div class="hidden md:block w-px h-12 bg-white/20"></div>
+            <div>
+                <h3 class="text-5xl font-black mb-1">50+</h3>
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-200">Recorded Courses</p>
+            </div>
+            <div class="hidden md:block w-px h-12 bg-white/20"></div>
+            <div>
+                <h3 class="text-5xl font-black mb-1">15M</h3>
+                <p class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-200">Satisfaction Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const textElement = document.getElementById('textSwitcher');
+        const flowContainer = document.getElementById('cardFlow');
+        const titles = ['Apex Public School', 'Our School'];
+        let currentIndex = 0;
+
+        function triggerAnimation() {
+            // 1. Text Exit Animation (Quick)
+            textElement.style.opacity = '0';
+            textElement.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                // 2. Switch Index
+                currentIndex = (currentIndex + 1) % titles.length;
+                
+                // 3. Update Text
+                textElement.innerText = titles[currentIndex];
+                textElement.style.opacity = '1';
+                textElement.style.transform = 'translateY(0)';
+
+                // 4. Slide Card (High Speed)
+                // Width calculation including gap (500px + 32px gap)
+                const moveWidth = window.innerWidth < 768 ? window.innerWidth : 532;
+                flowContainer.style.transform = `translateX(-${currentIndex * moveWidth}px)`;
+                
+            }, 300); // Fast text swap delay
+        }
+
+        // Set interval for every 3 seconds to keep motion high
+        setInterval(triggerAnimation, 3000);
+    });
+</script>
+
+
+<section class="bg-slate-50 py-20 relative overflow-hidden">
+    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16">
+            <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Why you Choose Apex Public School </span>
+            <h3 class="text-4xl md:text-5xl font-black text-blue-900 mt-4 mb-4 uppercase tracking-tight">
+                Pillars of <span class="text-blue-600">Excellence at Apex </span>
+            </h3>
+            <div class="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-chalkboard-teacher text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">01. Modern Tech</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Digital Smart Classrooms</h4>
+                        <p class="text-gray-500 text-sm mt-2">Immersive visual learning environments for every grade.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">02. Leadership</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Highly Qualified Faculty</h4>
+                        <p class="text-gray-500 text-sm mt-2">Expert educators with a dedicated student-first approach.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-microscope text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">03. Research</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Advanced Science Labs</h4>
+                        <p class="text-gray-500 text-sm mt-2">Specialized Physics, Chemistry, and Biology facilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-laptop text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">04. IT Infrastructure</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Hi-Tech Computer Lab</h4>
+                        <p class="text-gray-500 text-sm mt-2">Equipped with high-speed internet and coding tools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-video text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">05. Security</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">24/7 CCTV Surveillance</h4>
+                        <p class="text-gray-500 text-sm mt-2">Comprehensive safety monitoring across the entire campus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-bus text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">06. Logistics</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">GPS Enabled Transport</h4>
+                        <p class="text-gray-500 text-sm mt-2">Real-time bus tracking for safe student transit.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-tint text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">07. Wellness</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">R.O. Purified Water</h4>
+                        <p class="text-gray-500 text-sm mt-2">Hygienic campus with safe drinking water systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-user-md text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">08. Healthcare</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Dedicated Infirmary</h4>
+                        <p class="text-gray-500 text-sm mt-2">On-call medical support for student health emergencies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-language text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">09. Communication</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">100% English Campus</h4>
+                        <p class="text-gray-500 text-sm mt-2">Fluency focus to boost global student confidence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-microphone-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">10. Soft Skills</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Public Speaking Labs</h4>
+                        <p class="text-gray-500 text-sm mt-2">Workshops for personality and character development.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-hand-holding-heart text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">11. Values</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Sanskaar-Based Education</h4>
+                        <p class="text-gray-500 text-sm mt-2">Blending modern curriculum with traditional values.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">12. Support</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Merit Scholarships</h4>
+                        <p class="text-gray-500 text-sm mt-2">Financial aid for meritorious and underprivileged kids.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-book-reader text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">13. Competitive</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">JEE/NEET Foundation</h4>
+                        <p class="text-gray-500 text-sm mt-2">Early-stage competitive coaching from middle school.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-award text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">14. Results</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">100% Board Success</h4>
+                        <p class="text-gray-500 text-sm mt-2">Consistent track record of toppers in CBSE Exams.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-volleyball-ball text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">15. Physical Ed</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Olympic-Level Sports</h4>
+                        <p class="text-gray-500 text-sm mt-2">Facilities for Cricket, Badminton, and Yoga.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-medal text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">16. Recognition</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">National Olympiads</h4>
+                        <p class="text-gray-500 text-sm mt-2">Regular training for national-level competitions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-book text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">17. Resources</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">5,000+ Title Library</h4>
+                        <p class="text-gray-500 text-sm mt-2">Well-stocked digital and physical book collection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-music text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">18. Creativity</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Performing Arts Clubs</h4>
+                        <p class="text-gray-500 text-sm mt-2">Music, Dance, and creative expression modules.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-map-marked-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">19. Exposure</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Annual Field Trips</h4>
+                        <p class="text-gray-500 text-sm mt-2">Educational tours to enhance practical knowledge.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fas fa-mobile-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-tighter">20. Digital Parent</span>
+                        <h4 class="text-gray-900 font-bold text-lg leading-tight mt-1">Smart Mobile App</h4>
+                        <p class="text-gray-500 text-sm mt-2">Real-time parent-teacher communication bridge.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div> 
+        </section>
+<section class="min-h-screen py-16 md:py-24 px-4 sm:px-6 font-sans overflow-hidden relative" 
+         style="background: radial-gradient(circle at top right, #2d1b69, #12133a, #08091a);">
+    
+    <div class="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 blur-[120px] -z-10"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 blur-[120px] -z-10"></div>
+
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-12 md:mb-20 text-center lg:text-left">
+            <span class="inline-block bg-blue-500/10 text-blue-400 text-xs font-bold px-5 py-2 rounded-full mb-6 border border-blue-500/20 tracking-widest uppercase">
+                Innovation Edge
+            </span>
+            <h2 class="text-white text-3xl sm:text-4xl md:text-6xl font-extrabold uppercase tracking-tight leading-[1.1]">
+                Achievements & <span class="text-cyan-400">Advantages</span><br class="hidden md:block">
+                Facilities & <span class="text-cyan-400">Technology</span>
+            </h2>
+            <div class="h-1.5 w-20 bg-cyan-400 mt-6 mb-8 rounded-full mx-auto lg:mx-0"></div>
+            <p class="text-gray-400 max-w-2xl text-base md:text-lg leading-relaxed mx-auto lg:mx-0">
+                Empowering students with world-class infrastructure and a legacy of academic brilliance. 
+                We build future leaders from right foundations.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+
+            <div class="glass-card group border-l-4 border-blue-500/50">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="icon-box bg-blue-500/20 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                        <i class="fas fa-running text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-xl tracking-wide">Elite Sports Hub</h3>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                    <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0">
+                        <img src="https://yt3.ggpht.com/14e054qeo6rtC-d3T4hsPobXOb0muJ1kly00wZrwBm0tORZIxqOxVza2YtLBm0xNHakVfWO1iRe1Sbs=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Sports">
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-blue-300 font-bold text-sm mb-2 uppercase tracking-wider">Playground Excellence</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">A sprawling green campus engineered for Cricket, Football, and high-performance Athletics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card group border-l-4 border-green-500/50">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="icon-box bg-green-500/20 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                        <i class="fas fa-flask text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-xl tracking-wide">Advanced Laboratories</h3>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                    <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Lab">
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-green-300 font-bold text-sm mb-2 uppercase tracking-wider">Science Wings</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">State of the art Physics, Chemistry, and Biology labs for high-performance research.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card group border-l-4 border-purple-500/50">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="icon-box bg-purple-500/20 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                        <i class="fas fa-laptop text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-xl tracking-wide">Digital Classrooms</h3>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                    <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Class">
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-purple-300 font-bold text-sm mb-2 uppercase tracking-wider">Interactive Learning</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">State of the art 3D visual modules that make learning practical and fun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card group border-l-4 border-emerald-500/50">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="icon-box bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                        <i class="fas fa-desktop text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-xl tracking-wide">Smart Tech Hub</h3>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                    <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Tech">
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-emerald-300 font-bold text-sm mb-2 uppercase tracking-wider">Modern Computing</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Modern computer labs with high-speed internet and specialized learning software.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card group border-l-4 border-red-500/50">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="icon-box bg-red-500/20 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                        <i class="fas fa-bus text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-xl tracking-wide">Secure Transport</h3>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                    <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Bus">
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-red-300 font-bold text-sm mb-2 uppercase tracking-wider">GPS Security</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">GPS-integrated bus fleet covering major routes with 24/7 real-time security tracking.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card group border-l-4 border-indigo-500/50">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="icon-box bg-indigo-500/20 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+                        <i class="fas fa-shield-alt text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-xl tracking-wide">Child Care Hub</h3>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
+                    <div class="w-full sm:w-44 h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1570126618953-d437176e8c79?auto=format&fit=crop&w=400" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Safety">
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-indigo-300 font-bold text-sm mb-2 uppercase tracking-wider">Verified Staff</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Background verified drivers and female attendants to ensure absolute child safety.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 2.5rem;
+        padding: 1.75rem;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-8px);
+        border-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .icon-box {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .glass-card:hover .icon-box {
+        transform: rotate(10deg) scale(1.1);
+    }
+</style>
+
+
+<section class="py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h3 class="text-4xl md:text-5xl font-black text-blue-900 mb-4 tracking-tight uppercase">
+                The Heart of <span class="text-blue-600">Discovery</span>
+            </h3>
+            <div class="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="relative">
+                <div class="relative z-10 group">
+                    <div class="absolute -inset-4 bg-blue-50 rounded-[3rem] -z-10 transform group-hover:scale-105 transition-transform duration-500"></div>
+                    <img src="https://yt3.ggpht.com/cWbF7pNSJQxtOn3Rl8Zza3ZdfJ7i91FT99OChmLFni8X6czRFuMlGhPGR5tu7XbpQ0TAUcaNdRKx=s1024-rw-nd-v1" 
+                         alt="Apex Smart Classroom" 
+                         class="w-full h-[500px] object-cover rounded-[2.5rem] shadow-2xl border-4 border-white">
+                    
+                    <div class="absolute top-6 left-6 bg-blue-600/90 backdrop-blur-md text-white px-6 py-3 rounded-2xl shadow-xl hidden md:flex items-center gap-3">
+                        <i class="fas fa-microchip text-yellow-400"></i>
+                        <span class="font-bold tracking-wide uppercase text-xs">AI-Enabled Smart Class</span>
+                    </div>
+
+                    <div class="absolute -bottom-10 -right-6 md:right-12 bg-white p-8 rounded-[2rem] shadow-2xl border border-gray-100 hidden sm:block max-w-xs">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-yellow-600"></i>
+                            </div>
+                            <p class="font-black text-blue-900 leading-tight">Interactive Learning Environment</p>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">"Designed to stimulate curiosity and foster collaborative problem-solving."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-24 text-center relative">
+                <span class="absolute -top-12 left-1/2 -translate-x-1/2 text-8xl text-blue-50 font-serif opacity-50">“</span>
+                
+                <div class="max-w-4xl mx-auto relative z-10">
+                    <p class="text-2xl md:text-3xl text-gray-700 leading-relaxed font-medium italic">
+                        Our classrooms are the <span class="text-blue-600 font-bold">heart of discovery</span>. Every teacher at Apex is a mentor who works tirelessly to ignite the fire of knowledge.
+                    </p>
+                    
+                    <div class="mt-8 flex flex-col items-center">
+                        <div class="h-1 w-12 bg-blue-200 mb-4"></div>
+                        <p class="text-blue-900 font-black uppercase tracking-widest">Academic Excellence Team</p>
+                        <p class="text-yellow-500 font-bold text-sm">APEX PUBLIC SCHOOL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-24 bg-gray-50 overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Find Us</span>
+            <h3 class="text-4xl md:text-5xl font-black text-blue-900 mt-4 mb-4 uppercase tracking-tight">Visit Our <span class="text-blue-600">Campus</span></h3>
+            <div class="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl border border-gray-100 text-center transition-all duration-300 group">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                </div>
+                <h4 class="text-lg font-black text-blue-900 mb-2">Our Address</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">XRF6+W68, Dhrubgama, Kalyanpur,<br>Samastipur, Bihar 848302</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl border border-gray-100 text-center transition-all duration-300 group">
+                <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600 group-hover:text-white transition-all">
+                    <i class="fas fa-phone-alt text-2xl"></i>
+                </div>
+                <h4 class="text-lg font-black text-blue-900 mb-2">Call Us</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">+91 99392 60307<br>+91 99392 60308</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl border border-gray-100 text-center transition-all duration-300 group">
+                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-red-600 group-hover:text-white transition-all">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </div>
+                <h4 class="text-lg font-black text-blue-900 mb-2">Email Us</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">apexpublicschool@gmail.com<br>info@apexschool.com</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl border border-gray-100 text-center transition-all duration-300 group">
+                <div class="w-14 h-14 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-yellow-500 group-hover:text-white transition-all">
+                    <i class="fas fa-clock text-2xl"></i>
+                </div>
+                <h4 class="text-lg font-black text-blue-900 mb-2">Working Hours</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Mon - Sat: 8:30 AM - 2:00 PM<br>Sunday: Closed</p>
+            </div>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto group">
+            <div class="absolute top-8 left-8 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-white hidden md:flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center">
+                    <i class="fas fa-school text-xl"></i>
+                </div>
+                <div>
+                    <h5 class="font-black text-blue-900 leading-none">Apex Public School</h5>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 font-bold">Dhrubgama Campus</p>
+                </div>
+            </div>
+
+            <div class="relative z-10 h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3588.6366034176466!2d85.90826977540344!3d25.91437147728444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed97ec920606a7%3A0x206698204f3c2b2f!2sApex%20Public%20School!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    class="grayscale-[20%] contrast-[1.1] brightness-[1.05]">
+                </iframe>
+            </div>
+
+            <div class="absolute -bottom-6 -right-6 md:right-12 z-20 bg-blue-900 text-white p-6 rounded-[2.5rem] shadow-2xl flex items-center gap-4 animate-bounce hover:animate-none cursor-default">
+                <div class="bg-yellow-400 w-12 h-12 rounded-xl flex items-center justify-center text-blue-900">
+                    <i class="fas fa-trophy text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-[10px] uppercase font-bold text-yellow-400 tracking-widest leading-none mb-1">Top Rated Excellence</p>
+                    <p class="text-xl font-black leading-none">Ranked #1 School</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-20">
+            <a href="https://maps.google.com/?cid=2334720721373899567&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" 
+               class="inline-flex items-center gap-4 bg-blue-600 text-white px-12 py-5 rounded-full font-black text-lg shadow-xl hover:bg-blue-800 hover:shadow-blue-500/30 hover:-translate-y-1 transition-all group">
+                <i class="fas fa-directions text-xl group-hover:rotate-12 transition-transform"></i>
+                OPEN IN GOOGLE MAPS
+            </a>
+        </div>
+    </div>
+</section>
+<section class="py-24 bg-[#020617] relative overflow-hidden font-sans">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-fuchsia-500/10 blur-[120px] rounded-full animate-pulse"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-[3rem] overflow-hidden shadow-2xl border border-white/10">
+            
+            <div class="bg-gradient-to-br from-[#0f172a] to-[#020617] p-12 text-white flex flex-col justify-between border-r border-white/5">
+                <div>
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
+                        <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Enrollment Portal 2026</span>
+                    </div>
+                    <h2 class="text-5xl font-extrabold leading-tight mb-6">
+                        The Next <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">Generation</span> <br>Starts Here.
+                    </h2>
+                    <p class="text-slate-400 text-lg mb-12 max-w-sm">
+                        Schedule a private consultation with our dean to explore a personalized academic roadmap for your child.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+                        <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-slate-500 uppercase font-bold">Priority Support</p>
+                            <p class="text-sm font-semibold">+91 9939260307</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-12 relative">
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold text-slate-900">Secure Your Slot</h3>
+                    <p class="text-slate-400 text-sm mt-1">Available timings: 10:00 AM - 04:00 PM</p>
+                </div>
+
+                <form id="appointmentForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <label class="text-[10px] font-bold text-cyan-600 uppercase ml-2 mb-1 block">Student Name</label>
+                            <input type="text" id="studentName" placeholder="Full Name" required class="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-cyan-500 focus:bg-white outline-none transition-all">
+                        </div>
+                        <div class="relative">
+                            <label class="text-[10px] font-bold text-cyan-600 uppercase ml-2 mb-1 block">Parent/Guardian</label>
+                            <input type="text" id="parentName" placeholder="Guardian Name" required class="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-cyan-500 focus:bg-white outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <label class="text-[10px] font-bold text-cyan-600 uppercase ml-2 mb-1 block">WhatsApp Number</label>
+                            <input type="tel" id="whatsapp" placeholder="+91 00000 00000" required class="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-cyan-500 focus:bg-white outline-none transition-all">
+                        </div>
+                        
+                        <div class="relative">
+                            <label class="text-[10px] font-bold text-cyan-600 uppercase ml-2 mb-1 block">Preferred Date</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-4 text-slate-400 text-sm pointer-events-none">Preferred Date:</span>
+                                <input type="date" id="prefDate" required class="w-full pl-32 pr-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-cyan-500 focus:bg-white outline-none transition-all text-slate-700">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <label class="text-[10px] font-bold text-cyan-600 uppercase ml-2 mb-1 block">Select Inquiry Type</label>
+                        <select id="visitType" class="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-cyan-500 outline-none appearance-none text-slate-500">
+                            <option>New Admission Inquiry</option>
+                            <option>Campus Tour</option>
+                            <option>Scholarship Assessment</option>
+                        </select>
+                    </div>
+
+                    <div class="relative">
+                        <label class="text-[10px] font-bold text-cyan-600 uppercase ml-2 mb-1 block">Additional Message</label>
+                        <textarea id="message" rows="3" placeholder="Any specific requirements?" class="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:border-cyan-500 outline-none resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-[#0f172a] hover:bg-cyan-600 text-white font-bold rounded-xl transition-all shadow-lg flex items-center justify-center gap-3 active:scale-95">
+                        <span>Confirm Appointment</span>
+                        <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="successOverlay" class="fixed inset-0 z-[100] bg-slate-900/90 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-[2.5rem] p-10 max-w-sm w-full text-center shadow-2xl transform scale-90 transition-transform">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fas fa-check"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-slate-900 mb-2">Booking Confirmed!</h4>
+            <p class="text-slate-500 text-sm mb-8 leading-relaxed">A message has been sent to the Admin. Our team will contact you on WhatsApp shortly.</p>
+            <button onclick="closeOverlay()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-xl transition-all">Dismiss</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    const form = document.getElementById('appointmentForm');
+    const overlay = document.getElementById('successOverlay');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 1. Data captured for Admin
+        const formData = {
+            student: document.getElementById('studentName').value,
+            parent: document.getElementById('parentName').value,
+            phone: document.getElementById('whatsapp').value,
+            date: document.getElementById('prefDate').value,
+            type: document.getElementById('visitType').value
+        };
+
+        // 2. Alert Admin (Visual Simulation)
+        console.log("ALERT ADMIN: New booking received from " + formData.parent);
+
+        // 3. User Feedback
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+        form.reset();
+    });
+
+    function closeOverlay() {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+    }
+</script>
+
+
+<footer class="bg-slate-900 text-white pt-20 pb-10 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="20,20"/></svg>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <img src="https://theschoolashram.com/ashram_api/storage/app/public/igODMSt66C.jpg" alt="Apex Logo" class="w-16 h-16 rounded-xl bg-white p-1">
+                    <div>
+                        <h3 class="text-xl font-black tracking-tight text-yellow-400">APEX PUBLIC SCHOOL</h3>
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-widest"> Dhrubgama Kalyanpur Samastipur</p>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Dedicated to excellence in education, character building, and nurturing the leaders of tomorrow in Bihar.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all group">
+                        <i class="fab fa-facebook-f group-hover:scale-110"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-red-600 transition-all group">
+                        <i class="fab fa-youtube group-hover:scale-110"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-all group">
+                        <i class="fab fa-instagram group-hover:scale-110"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b-2 border-yellow-400 inline-block">Quick Links</h4>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li><a href="#" onclick="switchPage('home')" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Home Page</a></li>
+                    <li><a href="#" onclick="switchPage('about')" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> About School</a></li>
+                    <li><a href="#" onclick="switchPage('admission')" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Admissions</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Academic Calendar</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b-2 border-yellow-400 inline-block">Contact Us</h4>
+                <ul class="space-y-4 text-gray-400 text-sm">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt text-yellow-400 mt-1"></i>
+                        <span>Dhrubgama, Kalyanpur,<br>Samastipur, Bihar 848302</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-phone-alt text-yellow-400"></i>
+                        <span>+91 99392 60307</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-yellow-400"></i>
+                        <span>apexpublicschool@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b-2 border-yellow-400 inline-block">Find Us</h4>
+                <div class="rounded-2xl overflow-hidden h-40 border border-slate-700">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.8288544490714!2d85.91893117540656!3d25.940822677279313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed97ec920406a7%3A0x206698204f3c2b2f!2sApex%20Public%20School!5e0!3m2!1sen!2sin!4v1709123456789!5m2!1sen!2sin" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-2 italic text-center">Open 10:00 AM — 06:00 PM</p>
+            </div>
+
+        </div>
+
+        <div class="border-t border-slate-800 pt-8 flex flex-col md:row gap-6 items-center justify-between">
+            <p class="text-gray-500 text-sm text-center md:text-left">
+                © 2026 <span class="text-white font-bold">Apex Public School</span>. All Rights Reserved.
+            </p>
+            <div class="flex gap-6 text-gray-500 text-xs font-bold uppercase tracking-widest">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</main>
+
+<main id="about-section" class="page-section fade-in">
+    
+<header class="relative w-full min-h-[80vh] flex items-center justify-center bg-[#050a18] overflow-hidden border-b-[12px] border-[#c5a059]">
+    
+    <div class="absolute inset-0">
+        <div class="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,_transparent_0%,_#050a18_80%)]"></div>
+        
+        <div class="absolute inset-0 opacity-[0.05] z-0" 
+             style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l30 30-30 30L0 30z\' fill=\'%23c5a059\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+        </div>
+
+        <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-900 rounded-full blur-[150px] opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#c5a059] rounded-full blur-[150px] opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="container mx-auto relative z-20 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            
+            <div class="flex items-center justify-center gap-4 mb-10 opacity-0 animate-slide-down" style="animation-fill-mode: forwards;">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#c5a059]"></div>
+                <span class="text-[#c5a059] font-serif italic text-lg tracking-[0.2em] uppercase">Since 1998</span>
+                <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#c5a059]"></div>
+            </div>
+
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif text-white leading-[0.9] mb-12 opacity-0 animate-reveal-text" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
+                A Legacy of <br>
+                <span class="relative inline-block">
+                    <span class="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-[#f3e2b3] via-[#c5a059] to-[#8a6d3b]">Distinction</span>
+                    <div class="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#c5a059] to-transparent"></div>
+                </span>
+            </h1>
+
+            <div class="max-w-2xl mx-auto opacity-0 animate-fade-in" style="animation-delay: 1.2s; animation-fill-mode: forwards;">
+                <p class="text-xl md:text-2xl text-slate-300 font-light leading-relaxed tracking-wide">
+                    Cultivating <span class="text-[#c5a059] font-medium">Character</span>, 
+                    Inspiring <span class="text-[#c5a059] font-medium">Innovation</span>, 
+                    and Nurturing the <span class="text-white border-b border-white/20">Leaders of Tomorrow.</span>
+                </p>
+                                <p class="text-xl md:text-2xl text-slate-300 font-light leading-relaxed tracking-wide">
+                    Education is the  <span class="text-[#c5a059] font-medium"> Most Powerful Weapons </span>
+                    in the world  <span class="text-[#c5a059] font-medium"> which you can used to </span> 
+                    Change the  <span class="text-white border-b border-white/20"> World. </span>
+                </p>
+                
+                <div class="mt-16 flex justify-center">
+                    <div class="relative">
+                        <div class="w-16 h-16 border border-[#c5a059]/30 rounded-full flex items-center justify-center rotate-45 animate-spin-slow">
+                            <div class="w-12 h-12 border border-[#c5a059]/60 rounded-full"></div>
+                        </div>
+                        <i class="fas fa-crown absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#c5a059] text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 opacity-0 animate-bounce" style="animation-delay: 2s; animation-fill-mode: forwards;">
+        <div class="w-[1px] h-16 bg-gradient-to-b from-[#c5a059] to-transparent"></div>
+    </div>
+</header>
+
+<style>
+    @keyframes slide-down {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes reveal-text {
+        from { opacity: 0; transform: translateY(50px); filter: blur(10px); }
+        to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .animate-slide-down { animation: slide-down 1s ease-out; }
+    .animate-reveal-text { animation: reveal-text 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .animate-fade-in { animation: fade-in 1.5s ease-out; }
+    .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+</style>
+
+
+ <section class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-7xl mx-auto bg-slate-50 rounded-[4rem] p-8 md:p-16 border border-slate-100 shadow-sm">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 text-yellow-700 rounded-full font-black text-xs uppercase tracking-widest mb-6 border border-yellow-200">
+                        <i class="fas fa-history"></i>
+                        Establishing Excellence Since 1998
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-black text-blue-950 mb-8 leading-tight tracking-tight">
+                        A Legacy of Learning,<br>
+                        <span class="text-blue-600">Built on Trust.</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
+                        <p>
+                            Apex Public School began with a humble mission: to bring <span class="text-blue-900 font-bold">world-class education</span> to the heart of Samastipur. What started as a vision for local empowerment has flourished into a beacon of academic prestige.
+                        </p>
+                        <p>
+                            For over a quarter-century, we have nurtured thousands of minds, evolving from a small classroom into a vibrant campus. We believe education is a <span class="text-blue-900 font-bold">sacred partnership</span> between home and school, focused on holistic human development.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 mt-12 pt-8 border-t border-gray-200">
+                        <div class="flex flex-col">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-5xl font-black text-blue-600 tracking-tighter">25</span>
+                                <span class="text-2xl font-black text-blue-400">+</span>
+                            </div>
+                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest mt-1">Years of Heritage</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-5xl font-black text-blue-600 tracking-tighter">12</span>
+                                <span class="text-2xl font-black text-blue-400">k+</span>
+                            </div>
+                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest mt-1">Global Alumni</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="relative">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-yellow-400 rounded-full opacity-20 blur-3xl"></div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-400 rounded-full opacity-20 blur-3xl"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="absolute inset-0 bg-blue-900 translate-x-4 translate-y-4 rounded-[2.5rem] -z-10"></div>
+                            <img src="https://yt3.ggpht.com/gpDvBndXUiAXhchahED3KwEfxMQAW5BNwVzjE3zn1lIISbQFMZFXOPoCTCufJOdDBMTUjH5xiPMW=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" 
+                                 alt="Apex Public School Campus" 
+                                 class="w-full h-[450px] object-cover rounded-[2.5rem] shadow-2xl border-2 border-white">
+                        </div>
+
+                        <div class="absolute -bottom-6 right-8 bg-white p-6 rounded-2xl shadow-2xl border border-gray-50 flex items-center gap-4 z-20">
+                            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                                <i class="fas fa-award text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-black text-gray-400 uppercase tracking-tighter leading-none mb-1">Recognized by</p>
+                                <p class="text-sm font-black text-blue-900 uppercase">CBSE Affiliated</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-slate-50 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100/40 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                
+                <div class="group relative bg-white p-10 md:p-14 rounded-[3rem] shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-bl-[5rem] -mr-8 -mt-8 transition-all group-hover:scale-110"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-blue-600 text-white rounded-[1.5rem] flex items-center justify-center text-4xl mb-8 shadow-lg shadow-blue-600/30 group-hover:rotate-6 transition-transform">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        
+                        <span class="text-blue-600 font-black text-xs uppercase tracking-[0.3em] mb-4 block">Strategic Goal</span>
+                        <h3 class="text-4xl font-black text-blue-950 mb-6 tracking-tight">Our <span class="text-blue-600">Mission</span></h3>
+                        
+                        <p class="text-gray-600 text-lg leading-relaxed font-medium">
+                            To provide a <span class="text-blue-900 font-bold">safe and intellectually challenging</span> environment that will empower students to become innovative thinkers, prepared to thrive in an ever-evolving global landscape.
+                        </p>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 w-full h-2 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                </div>
+
+                <div class="group relative bg-white p-10 md:p-14 rounded-[3rem] shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-400/5 rounded-bl-[5rem] -mr-8 -mt-8 transition-all group-hover:scale-110"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-20 h-20 bg-yellow-400 text-blue-900 rounded-[1.5rem] flex items-center justify-center text-4xl mb-8 shadow-lg shadow-yellow-400/30 group-hover:-rotate-6 transition-transform">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        
+                        <span class="text-yellow-600 font-black text-xs uppercase tracking-[0.3em] mb-4 block">Future Outlook</span>
+                        <h3 class="text-4xl font-black text-blue-950 mb-6 tracking-tight">Our <span class="text-yellow-500">Vision</span></h3>
+                        
+                        <p class="text-gray-600 text-lg leading-relaxed font-medium">
+                            To be a <span class="text-blue-900 font-bold">center of excellence</span> in education that nurtures the unique potential of every child, fostering a legacy of wisdom, character, and leadership.
+                        </p>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 w-full h-2 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-blue-900 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+        <div class="absolute top-[-10%] left-[-5%] w-96 h-96 bg-blue-400 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-96 h-96 bg-yellow-400 rounded-full blur-[120px] opacity-30"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-20">
+            <span class="bg-blue-800 text-blue-200 px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.3em] border border-blue-700">The Apex Foundation</span>
+            <h2 class="text-4xl md:text-6xl font-black text-white mt-6 mb-4 tracking-tight uppercase">Our Core <span class="text-yellow-400">Values</span></h2>
+            <div class="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+            <p class="text-blue-200 mt-6 max-w-2xl mx-auto font-medium">The principles that guide every teacher, student, and decision at Apex Public School.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            
+            <div class="group relative p-10 rounded-[2.5rem] bg-blue-800/40 border border-blue-700 backdrop-blur-sm hover:bg-blue-800 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute top-6 right-8 text-blue-700/30 text-6xl font-black group-hover:text-yellow-400/10 transition-colors">01</div>
+                <div class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-8 shadow-xl group-hover:bg-yellow-400 transition-colors duration-500">
+                    <i class="fas fa-hand-holding-heart text-3xl text-yellow-400 group-hover:text-blue-900 transition-colors"></i>
+                </div>
+                <h4 class="text-2xl font-black text-white mb-3 tracking-tight">Integrity</h4>
+                <p class="text-blue-100/70 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    Operating with absolute honesty and strong moral principles in every action we take.
+                </p>
+                <div class="mt-6 w-0 group-hover:w-full h-1 bg-yellow-400 transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="group relative p-10 rounded-[2.5rem] bg-blue-800/40 border border-blue-700 backdrop-blur-sm hover:bg-blue-800 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute top-6 right-8 text-blue-700/30 text-6xl font-black group-hover:text-yellow-400/10 transition-colors">02</div>
+                <div class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-8 shadow-xl group-hover:bg-yellow-400 transition-colors duration-500">
+                    <i class="fas fa-brain text-3xl text-yellow-400 group-hover:text-blue-900 transition-colors"></i>
+                </div>
+                <h4 class="text-2xl font-black text-white mb-3 tracking-tight">Innovation</h4>
+                <p class="text-blue-100/70 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    Embracing new ideas, digital transformation, and creative problem-solving methods.
+                </p>
+                <div class="mt-6 w-0 group-hover:w-full h-1 bg-yellow-400 transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="group relative p-10 rounded-[2.5rem] bg-blue-800/40 border border-blue-700 backdrop-blur-sm hover:bg-blue-800 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute top-6 right-8 text-blue-700/30 text-6xl font-black group-hover:text-yellow-400/10 transition-colors">03</div>
+                <div class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-8 shadow-xl group-hover:bg-yellow-400 transition-colors duration-500">
+                    <i class="fas fa-users text-3xl text-yellow-400 group-hover:text-blue-900 transition-colors"></i>
+                </div>
+                <h4 class="text-2xl font-black text-white mb-3 tracking-tight">Community</h4>
+                <p class="text-blue-100/70 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    Building a collaborative, supportive family where every member belongs and thrives.
+                </p>
+                <div class="mt-6 w-0 group-hover:w-full h-1 bg-yellow-400 transition-all duration-500 rounded-full"></div>
+            </div>
+
+            <div class="group relative p-10 rounded-[2.5rem] bg-blue-800/40 border border-blue-700 backdrop-blur-sm hover:bg-blue-800 transition-all duration-500 hover:-translate-y-2">
+                <div class="absolute top-6 right-8 text-blue-700/30 text-6xl font-black group-hover:text-yellow-400/10 transition-colors">04</div>
+                <div class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-8 shadow-xl group-hover:bg-yellow-400 transition-colors duration-500">
+                    <i class="fas fa-star text-3xl text-yellow-400 group-hover:text-blue-900 transition-colors"></i>
+                </div>
+                <h4 class="text-2xl font-black text-white mb-3 tracking-tight">Excellence</h4>
+                <p class="text-blue-100/70 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    Unwavering commitment to the highest quality in academics, arts, and character.
+                </p>
+                <div class="mt-6 w-0 group-hover:w-full h-1 bg-yellow-400 transition-all duration-500 rounded-full"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="py-24 bg-slate-50 relative overflow-hidden">
+    <div class="absolute -top-20 -left-20 text-[30rem] font-black text-blue-900/[0.03] select-none pointer-events-none">A</div>
+
+   <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-20">
+            <span class="text-blue-600 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Beyond Academics</span>
+            <h2 class="text-4xl md:text-5xl font-black text-blue-950 mb-6 uppercase tracking-tight">
+                Shaping the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Complete Child</span>
+            </h2>
+            <p class="text-gray-500 text-lg">We don't just teach subjects; we cultivate the habits and mindsets required for a lifetime of success and leadership.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="group bg-white p-10 rounded-[3rem] shadow-xl shadow-blue-900/5 hover:bg-blue-600 transition-all duration-500 hover:-translate-y-4">
+                <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500 transition-colors">
+                    <i class="fas fa-lightbulb text-3xl text-blue-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-2xl font-black text-blue-900 mb-4 group-hover:text-white transition-colors uppercase">Creative Thinking</h3>
+                <p class="text-gray-500 group-hover:text-blue-100 transition-colors leading-relaxed">
+                    Our students are encouraged to ask "Why?" and "How?". We foster a culture where curiosity leads to innovation and problem-solving.
+                </p>
+                <div class="mt-8 flex items-center gap-2 text-blue-600 group-hover:text-yellow-400 font-black text-xs uppercase tracking-widest">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div class="group bg-white p-10 rounded-[3rem] shadow-xl shadow-blue-900/5 hover:bg-blue-600 transition-all duration-500 hover:-translate-y-4">
+                <div class="w-20 h-20 bg-yellow-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500 transition-colors">
+                    <i class="fas fa-shield-alt text-3xl text-yellow-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-2xl font-black text-blue-900 mb-4 group-hover:text-white transition-colors uppercase">Moral Integrity</h3>
+                <p class="text-gray-500 group-hover:text-blue-100 transition-colors leading-relaxed">
+                    Intelligence without character is dangerous. We instill deep-rooted Indian values of honesty, respect, and social responsibility.
+                </p>
+                <div class="mt-8 flex items-center gap-2 text-blue-600 group-hover:text-yellow-400 font-black text-xs uppercase tracking-widest">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div class="group bg-white p-10 rounded-[3rem] shadow-xl shadow-blue-900/5 hover:bg-blue-600 transition-all duration-500 hover:-translate-y-4">
+                <div class="w-20 h-20 bg-green-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500 transition-colors">
+                    <i class="fas fa-laptop-code text-3xl text-green-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-2xl font-black text-blue-900 mb-4 group-hover:text-white transition-colors uppercase">Digital Fluency</h3>
+                <p class="text-gray-500 group-hover:text-blue-100 transition-colors leading-relaxed">
+                    Preparing for 2030 and beyond. Students master modern tools and technology to become creators, not just consumers.
+                </p>
+                <div class="mt-8 flex items-center gap-2 text-blue-600 group-hover:text-yellow-400 font-black text-xs uppercase tracking-widest">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-24 max-w-5xl mx-auto bg-blue-900 rounded-[4rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-800 rounded-full blur-3xl opacity-50 -mr-20 -mt-20"></div>
+            <div class="relative z-10 flex flex-col md:row items-center gap-12">
+                <div class="w-full md:w-2/3">
+                    <h4 class="text-yellow-400 font-black uppercase tracking-[0.3em] text-sm mb-4">Our Unique Philosophy</h4>
+                    <p class="text-2xl md:text-4xl font-medium text-white leading-tight italic">
+                        "We believe every child is a unique seed. Our role is not to change the seed, but to provide the perfect soil for it to grow."
+                    </p>
+                </div>
+                <div class="w-px h-32 bg-blue-700 hidden md:block"></div>
+                <div class="w-full md:w-1/3 text-center md:text-left">
+                    <p class="text-white font-black text-xl uppercase leading-none mb-2 tracking-tighter">The Apex Way</p>
+                    <p class="text-blue-300 text-sm font-bold uppercase tracking-widest">Holistic Education Model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="section-spacing bg-white w-full overflow-hidden">
+    <div class="centered-container px-6">
+        
+        <div class="bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-12 shadow-sm">
+            
+            <div class="text-center mb-4">
+                <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tight">Our Gallery</h2>
+            </div>
+
+            <div class="text-center mb-12">
+                <h3 class="text-xl md:text-2xl font-semibold text-blue-600 italic">
+                    Nurturing Memory and Building Future
+                </h3>
+                <div class="h-1 w-20 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="https://yt3.ggpht.com/mswzkmoyULUGhnFjcG9j1M98tnU30L0SofWtwZiELdUNIZY1vKshSr_cByWiTHR-fXlP46m_kgNE1g=s1024-rw-nd-v1" alt="Gallery Image 1" class="w-full h-full object-cover">
+                </div>
+
+                <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="https://yt3.ggpht.com/2wKVALVPKwmzNbKrMajuyjOQEzuYWkCw10_YrBKOEEX5ml_BGjQhqVhDCQooHrtFmmYzgR1NMtNj9Q=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" alt="Gallery Image 2" class="w-full h-full object-cover">
+                </div>
+
+                <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="https://yt3.ggpht.com/2e5kIqVvL9xCfy2E_kEF20Bqh5VhKYf_b4EwE1chfKOGZDcG89icZF16Pl3G2YHBXUCAwQrBetS37w=s772-c-fcrop64=1,1f800000e07fffff-rw-nd-v1" alt="Gallery Image 3" class="w-full h-full object-cover">
+                </div>
+
+                <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="https://yt3.ggpht.com/gnzjQgrK2OtLJxi1QunFYIc0JEo91qQJzPLyrRxYouFl7cfWpjzv-f_vOU0avMnzglpwpD5ysOoc1g=s800-c-fcrop64=1,00000000ffffffff-rw-nd-v1" alt="Gallery Image 4" class="w-full h-full object-cover">
+                </div>
+
+                <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="https://yt3.ggpht.com/KqDtacRqBLPS0peH9Eb9ynwTs9rMsVxtmjDtIpjAGPNVUFjdiOrzbRWN6u6lmyBgIpCbI5S9ZxKOxZM=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" alt="Gallery Image 5" class="w-full h-full object-cover">
+                </div>
+
+                <div class="aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="https://yt3.ggpht.com/jZCxG8RXZwECtdW-vfOnSD8b_8PfOE_2YHEmj92ZUVi9EyU2vF5atE_e3ceCLDSxhL32Vur_wY221g=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" alt="Gallery Image 6" class="w-full h-full object-cover">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center w-full">
+        <div class="centered-container px-6">
+            <p>© 2025 Apex Public School. Building Lives.</p>
+        </div>
+    </footer>
+</main>
+
+     <main id="academics-section" class="page-section fade-in">
+    
+    <header class="bg-blue-900 text-white py-24 text-center w-full relative overflow-hidden">
+        <div class="centered-container relative z-10 px-6">
+            <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight">Academic Journey</h1>
+            <p class="text-xl text-blue-200 max-w-3xl mx-auto font-light leading-relaxed">
+                Integrating modern technology with traditional values to provide a world-class educational experience.
+            </p>
+        </div>
+    </header>
+
+    <section class="section-spacing bg-white w-full">
+        <div class="centered-container px-6">
+            
+            <div class="bg-gray-50 border border-gray-200 rounded-[2.5rem] p-6 md:p-16 shadow-sm">
+                
+                <div class="flex flex-col lg:flex-row items-center gap-16 mb-24">
+                    <div class="w-full lg:w-1/2">
+                        <div class="inline-block px-4 py-1 bg-blue-100 text-blue-700 rounded-full font-bold text-xs uppercase mb-4">Our Approach</div>
+                        <h2 class="text-4xl font-black text-blue-900 mb-6 leading-tight">Nurturing Minds through Scientific Inquiry</h2>
+                        <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                            Our curriculum is designed to spark curiosity. We don't just teach students to memorize facts; we teach them how to analyze, question, and innovate through hands-on learning modules.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm text-center">
+                                <span class="block text-2xl font-black text-blue-600">1:25</span>
+                                <span class="text-xs text-gray-500 uppercase font-bold">Teacher Ratio</span>
+                            </div>
+                            <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm text-center">
+                                <span class="block text-2xl font-black text-blue-600">100%</span>
+                                <span class="text-xs text-gray-500 uppercase font-bold">Smart Class</span>
+                            </div>
+                        </div>
+                </div>
+                    <div class="w-full lg:w-1/2 aspect-video bg-gray-200 rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://yt3.ggpht.com/IjT-iqdpQpBGfPSAgXEkuV6hLfARCkryQPdFeqwZU4ORgr1jTt_dNolTAwfRgx8CkyC_a1K3c21-Ii0=s1024-c-fcrop64=1,00000000ffffffff-rw-nd-v1" alt="Learning Environment" class="w-full h-full object-cover">
+                    </div>
+                </div>
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        
+        <div class="text-center mb-20 relative">
+            <span class="bg-blue-100 text-blue-700 px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] border border-blue-200">World-Class Facilities</span>
+            <h2 class="text-4xl md:text-5xl font-black text-blue-950 mt-6 mb-4 tracking-tighter uppercase">Academic <span class="text-blue-600">Infrastructure</span></h2>
+            <div class="h-1.5 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="group relative bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                    <i class="fas fa-atom text-3xl"></i>
+                </div>
+                <h4 class="text-xl font-black text-blue-900 mb-3 uppercase tracking-tight">Physics <span class="text-red-600">Lab</span></h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    A specialized hub for mechanics, optics, and thermodynamics featuring precision-calibrated instruments.
+                </p>
+                <div class="flex items-center gap-2 text-[10px] font-bold text-red-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="w-8 h-[1px] bg-red-500"></span> Precision Tools
+                </div>
+            </div>
+
+            <div class="group relative bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-green-500/10 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-green-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                    <i class="fas fa-vial text-3xl"></i>
+                </div>
+                <h4 class="text-xl font-black text-blue-900 mb-3 uppercase tracking-tight">Chemistry <span class="text-green-600">Lab</span></h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    State-of-the-art workstations with advanced safety protocols for high-level chemical experiments.
+                </p>
+                <div class="flex items-center gap-2 text-[10px] font-bold text-green-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="w-8 h-[1px] bg-green-500"></span> Safety Certified
+                </div>
+            </div>
+
+            <div class="group relative bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                    <i class="fas fa-laptop-code text-3xl"></i>
+                </div>
+                <h4 class="text-xl font-black text-blue-900 mb-3 uppercase tracking-tight">IT & <span class="text-blue-600">Coding</span></h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    Dual-boot systems with fiber-optic internet and AI-ready software for modern digital literacy.
+                </p>
+                <div class="flex items-center gap-2 text-[10px] font-bold text-blue-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="w-8 h-[1px] bg-blue-500"></span> 5G Enabled
+                </div>
+            </div>
+
+            <div class="group relative bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-yellow-500/10 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-500 shadow-sm">
+                    <i class="fas fa-book-open text-3xl"></i>
+                </div>
+                <h4 class="text-xl font-black text-blue-900 mb-3 uppercase tracking-tight">Digital <span class="text-yellow-600">Library</span></h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                    A silent sanctuary with 5,000+ volumes and Kindle access for unlimited global research.
+                </p>
+                <div class="flex items-center gap-2 text-[10px] font-bold text-yellow-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="w-8 h-[1px] bg-yellow-600"></span> 24/7 Access
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+                    <div class="bg-blue-900 text-white p-10 rounded-[2rem] shadow-xl">
+                        <h3 class="text-2xl font-black mb-4">Student Counseling</h3>
+                        <p class="text-blue-100 mb-6 italic leading-relaxed">
+                            "Mental well-being is as important as academic grades."
+                        </p>
+                        <p class="text-sm text-blue-200 mb-6">
+                            Our in-house counselors work with students to manage exam stress, career planning, and personal development.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user-shield text-sm"></i>
+                            </div>
+                            <span class="text-sm font-bold">Confidential Support</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-gray-200 p-10 rounded-[2rem] shadow-sm">
+                        <h3 class="text-2xl font-black text-blue-900 mb-6">The House System</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                                <span class="font-bold text-red-600"><i class="fas fa-shield-alt mr-2"></i> Agni House</span>
+                                <span class="text-xs font-bold text-gray-400">Courage & Strength</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                                <span class="font-bold text-blue-600"><i class="fas fa-shield-alt mr-2"></i> Jal House</span>
+                                <span class="text-xs font-bold text-gray-400">Wisdom & Peace</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                                <span class="font-bold text-yellow-600"><i class="fas fa-shield-alt mr-2"></i> Prithvi House</span>
+                                <span class="text-xs font-bold text-gray-400">Stability & Growth</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                                <span class="font-bold text-green-600"><i class="fas fa-shield-alt mr-2"></i> Akash House</span>
+                                <span class="text-xs font-bold text-gray-400">Vision & Infinity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 rounded-3xl p-8 mb-24">
+                    <h2 class="text-2xl font-black text-center text-blue-900 mb-8 uppercase tracking-widest">Operating Hours</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="flex items-center justify-between p-6 bg-white rounded-2xl shadow-sm border-l-4 border-yellow-400">
+                            <span class="font-bold text-gray-700 uppercase">Summer</span>
+                            <span class="text-blue-900 font-black">07:30 AM - 01:30 PM</span>
+                        </div>
+                        <div class="flex items-center justify-between p-6 bg-white rounded-2xl shadow-sm border-l-4 border-blue-600">
+                            <span class="font-bold text-gray-700 uppercase">Winter</span>
+                            <span class="text-blue-900 font-black">08:30 AM - 02:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-black text-blue-900 mb-12 uppercase">Examination Calendar</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <i class="fas fa-calendar-check text-blue-600 mb-3 block text-xl"></i>
+                            <h5 class="font-black text-blue-900">Unit Test 1</h5>
+                            <p class="text-xs text-gray-400 uppercase font-bold mt-2">July</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <i class="fas fa-file-alt text-blue-600 mb-3 block text-xl"></i>
+                            <h5 class="font-black text-blue-900">Term 1 Exam</h5>
+                            <p class="text-xs text-gray-400 uppercase font-bold mt-2">September</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <i class="fas fa-calendar-check text-blue-600 mb-3 block text-xl"></i>
+                            <h5 class="font-black text-blue-900">Unit Test 2</h5>
+                            <p class="text-xs text-gray-400 uppercase font-bold mt-2">December</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <i class="fas fa-graduation-cap text-blue-600 mb-3 block text-xl"></i>
+                            <h5 class="font-black text-blue-900">Final Exam</h5>
+                            <p class="text-xs text-gray-400 uppercase font-bold mt-2">March</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div>
+    </section>
+        <section class="py-12 bg-white px-4">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="text-2xl font-black text-blue-900 mb-8 text-center uppercase tracking-wider">
+            Mandatory Public Disclosure
+        </h3>
+        
+        <div class="overflow-hidden border border-gray-200 rounded-3xl shadow-sm">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50">
+                    <tr>
+                        <th class="p-4 text-sm font-bold text-gray-600 uppercase">Documents/Information</th>
+                        <th class="p-4 text-sm font-bold text-gray-600 uppercase text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr>
+                        <td class="p-4 text-gray-700 font-medium">Copies of Affiliation/Upgradation Letter</td>
+                        <td class="p-4 text-center">
+                            <a href="documents/affiliation.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold flex items-center justify-center gap-2">
+                                <i class="fas fa-file-pdf"></i> View/Download
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 text-gray-700 font-medium">Trust/Society/Company Registration</td>
+                        <td class="p-4 text-center">
+                            <a href="documents/trust.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold flex items-center justify-center gap-2">
+                                <i class="fas fa-file-pdf"></i> View/Download
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 text-gray-700 font-medium">Fire Safety Certificate</td>
+                        <td class="p-4 text-center">
+                            <a href="documents/fire-safety.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold flex items-center justify-center gap-2">
+                                <i class="fas fa-file-pdf"></i> View/Download
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 text-gray-700 font-medium">Building Safety Certificate</td>
+                        <td class="p-4 text-center">
+                            <a href="documents/building-safety.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold flex items-center justify-center gap-2">
+                                <i class="fas fa-file-pdf"></i> View/Download
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+                    <div class="mt-24">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-black text-blue-900 uppercase">Upcoming Events & Holidays</h2>
+                        <p class="text-gray-600 mt-2">Mark your calendars for these important dates.</p>
+                        <div class="h-1.5 w-20 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="flex items-center bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="flex-shrink-0 w-16 h-16 bg-blue-900 rounded-xl flex flex-col items-center justify-center text-white">
+                                <span class="text-xs uppercase font-bold">Jan</span>
+                                <span class="text-2xl font-black leading-none">26</span>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="font-bold text-blue-900 text-lg">Republic Day Celebration</h4>
+                                <p class="text-sm text-gray-500">Flag hoisting and cultural parade by students.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="flex-shrink-0 w-16 h-16 bg-yellow-400 rounded-xl flex flex-col items-center justify-center text-blue-900">
+                                <span class="text-xs uppercase font-bold">Feb</span>
+                                <span class="text-2xl font-black leading-none">15</span>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="font-bold text-blue-900 text-lg">Annual Sports Meet</h4>
+                                <p class="text-sm text-gray-500">Track events and prize distribution ceremony.</p>
+                            </div>
+                        </div>
+<div class="flex items-center bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="flex-shrink-0 w-16 h-16 bg-blue-900 rounded-xl flex flex-col items-center justify-center text-white">
+                                <span class="text-xs uppercase font-bold">Mar</span>
+                                <span class="text-2xl font-black leading-none">05</span>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="font-bold text-blue-900 text-lg">Parent-Teacher Meeting</h4>
+                                <p class="text-sm text-gray-500">Final discussion on student academic progress.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center bg-white p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition">
+                            <div class="flex-shrink-0 w-16 h-16 bg-yellow-400 rounded-xl flex flex-col items-center justify-center text-blue-900">
+                                <span class="text-xs uppercase font-bold">Apr</span>
+                                <span class="text-2xl font-black leading-none">01</span>
+                            </div>
+                            <div class="ml-6">
+                                <h4 class="font-bold text-blue-900 text-lg">New Academic Session</h4>
+                                <p class="text-sm text-gray-500">Start of the new session with fresh energy.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                   <div class="text-center mt-10">
+    <a href="https://drive.google.com/file/d/1hhs5qbegIyCa3A5OqYtRxd3pZmAWd6It/view" 
+       download="Academic_Calendar_2026-27.pdf" 
+       class="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition underline decoration-2 underline-offset-4">
+        <i class="fas fa-file-pdf"></i>
+        Download Full Academic Calendar 2025-26
+    </a>
+</div>
+
+                </div>
+<section id="curriculum-section" class="py-16 bg-slate-50 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-black text-blue-900 uppercase tracking-tight">Academic Resources</h2>
+            <p class="text-gray-500 mt-3 text-lg">Download the official Syllabus and Book List for the Academic Session 2026-27</p>
+            <div class="w-24 h-1.5 bg-green-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            
+            <script>
+                const classes = [
+                    { name: 'Nursery', wing: 'Pre-Primary', color: 'pink' },
+                    { name: 'L.K.G', wing: 'Pre-Primary', color: 'pink' },
+                    { name: 'U.K.G', wing: 'Pre-Primary', color: 'pink' },
+                    { name: 'Class 1st', wing: 'Primary', color: 'blue' },
+                    { name: 'Class 2nd', wing: 'Primary', color: 'blue' },
+                    { name: 'Class 3rd', wing: 'Primary', color: 'blue' },
+                    { name: 'Class 4th', wing: 'Primary', color: 'blue' },
+                    { name: 'Class 5th', wing: 'Primary', color: 'blue' },
+                    { name: 'Class 6th', wing: 'Middle', color: 'green' },
+                    { name: 'Class 7th', wing: 'Middle', color: 'green' },
+                    { name: 'Class 8th', wing: 'Middle', color: 'green' },
+                    { name: 'Class 9th', wing: 'Secondary', color: 'orange' },
+                    { name: 'Class 10th', wing: 'Secondary', color: 'orange' }
+                ];
+
+                const container = document.currentScript.parentElement;
+                
+                classes.forEach(cls => {
+                    const card = `
+                        <div class="bg-white p-6 rounded-[2rem] shadow-md hover:shadow-2xl transition-all border border-gray-100 group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <i class="fas fa-book-reader text-xl"></i>
+                                </div>
+                                <span class="text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter bg-gray-100 text-gray-500">
+                                    ${cls.wing}
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-blue-900 mb-5">${cls.name}</h3>
+                            
+                            <div class="flex flex-col gap-2">
+                                <a href="documents/syllabus/${cls.name.toLowerCase().replace(' ', '')}.pdf" download class="flex items-center justify-between px-4 py-2.5 bg-slate-50 rounded-xl hover:bg-green-50 hover:text-green-700 border border-transparent hover:border-green-200 transition-all text-sm font-semibold text-gray-600">
+                                    <span>Syllabus</span>
+                                    <i class="fas fa-download text-xs"></i>
+                                </a>
+                                <a href="documents/books/${cls.name.toLowerCase().replace(' ', '')}.pdf" download class="flex items-center justify-between px-4 py-2.5 bg-slate-50 rounded-xl hover:bg-blue-50 hover:text-blue-700 border border-transparent hover:border-blue-200 transition-all text-sm font-semibold text-gray-600">
+                                    <span>Book List</span>
+                                    <i class="fas fa-file-pdf text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += card;
+                });
+            </script>
+        </div>
+    </div>
+</section>
+<section id="toppers-section" class="py-20 bg-white px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h4 class="text-green-600 font-bold uppercase tracking-[0.2em] mb-2 text-sm">Academic Excellence</h4>
+            <h2 class="text-4xl md:text-5xl font-black text-blue-900 uppercase mb-4">Board Toppers 2025</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">Celebrating the hard work and outstanding achievements of our brilliant students who made us proud in the board examinations.</p>
+            <div class="w-24 h-1.5 bg-yellow-400 mx-auto mt-6 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            
+            <div class="group relative pt-16">
+                <div class="bg-slate-50 rounded-[3rem] p-8 text-center border border-gray-100 group-hover:bg-blue-900 transition-all duration-500 shadow-xl group-hover:shadow-blue-200">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 rounded-3xl overflow-hidden border-8 border-white shadow-lg group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/topper1.jpg" alt="Student Name" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="mt-8">
+                        <div class="bg-yellow-400 text-blue-900 text-xs font-black px-4 py-1 rounded-full inline-block mb-4">98.4% PERCENTAGE</div>
+                        <h3 class="text-xl font-black text-blue-900 group-hover:text-white mb-1">Rahul Sharma</h3>
+                        <p class="text-gray-500 group-hover:text-blue-200 font-bold text-sm uppercase mb-4 tracking-widest">Class X (CBSE)</p>
+                        <div class="pt-4 border-t border-gray-200 group-hover:border-blue-800">
+                            <span class="text-blue-600 group-hover:text-yellow-400 font-black text-lg">Rank #1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative pt-16">
+                <div class="bg-slate-50 rounded-[3rem] p-8 text-center border border-gray-100 group-hover:bg-blue-900 transition-all duration-500 shadow-xl group-hover:shadow-blue-200">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 rounded-3xl overflow-hidden border-8 border-white shadow-lg group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/topper2.jpg" alt="Student Name" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mt-8">
+                        <div class="bg-yellow-400 text-blue-900 text-xs font-black px-4 py-1 rounded-full inline-block mb-4">96.8% PERCENTAGE</div>
+                        <h3 class="text-xl font-black text-blue-900 group-hover:text-white mb-1">Priya Verma</h3>
+                        <p class="text-gray-500 group-hover:text-blue-200 font-bold text-sm uppercase mb-4 tracking-widest">Class XII (CBSE)</p>
+                        <div class="pt-4 border-t border-gray-200 group-hover:border-blue-800">
+                            <span class="text-blue-600 group-hover:text-yellow-400 font-black text-lg">Rank #2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative pt-16">
+                <div class="bg-slate-50 rounded-[3rem] p-8 text-center border border-gray-100 group-hover:bg-blue-900 transition-all duration-500 shadow-xl group-hover:shadow-blue-200">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 rounded-3xl overflow-hidden border-8 border-white shadow-lg group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/topper3.jpg" alt="Student Name" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mt-8">
+                        <div class="bg-yellow-400 text-blue-900 text-xs font-black px-4 py-1 rounded-full inline-block mb-4">95.2% PERCENTAGE</div>
+                        <h3 class="text-xl font-black text-blue-900 group-hover:text-white mb-1">Aniket Gupta</h3>
+                        <p class="text-gray-500 group-hover:text-blue-200 font-bold text-sm uppercase mb-4 tracking-widest">Class X (CBSE)</p>
+                        <div class="pt-4 border-t border-gray-200 group-hover:border-blue-800">
+                            <span class="text-blue-600 group-hover:text-yellow-400 font-black text-lg">Rank #3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative pt-16">
+                <div class="bg-slate-50 rounded-[3rem] p-8 text-center border border-gray-100 group-hover:bg-blue-900 transition-all duration-500 shadow-xl group-hover:shadow-blue-200">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 rounded-3xl overflow-hidden border-8 border-white shadow-lg group-hover:scale-110 transition-transform duration-500">
+                        <img src="images/topper4.jpg" alt="Student Name" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mt-8">
+                        <div class="bg-yellow-400 text-blue-900 text-xs font-black px-4 py-1 rounded-full inline-block mb-4">94.0% PERCENTAGE</div>
+                        <h3 class="text-xl font-black text-blue-900 group-hover:text-white mb-1">Sneha Kumari</h3>
+                        <p class="text-gray-500 group-hover:text-blue-200 font-bold text-sm uppercase mb-4 tracking-widest">Class XII (CBSE)</p>
+                        <div class="pt-4 border-t border-gray-200 group-hover:border-blue-800">
+                            <span class="text-blue-600 group-hover:text-yellow-400 font-black text-lg">Rank #4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+                <div class="mt-24">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-black text-blue-900 uppercase">Meet Our Mentors</h2>
+                        <p class="text-gray-600 mt-2">Highly qualified educators dedicated to student success.</p>
+                        <div class="h-1.5 w-20 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        
+                        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm text-center p-6 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="w-32 h-32 mx-auto mb-4 rounded-2xl bg-blue-50 border-2 border-blue-100 overflow-hidden">
+                                <img src="" alt="Teacher Name" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-black text-blue-900"> Rajeev Kumar</h4>
+                            <p class="text-blue-600 font-bold text-sm uppercase mb-3">Principal / Math</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">20+ years of experience in academic leadership.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm text-center p-6 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="w-32 h-32 mx-auto mb-4 rounded-2xl bg-blue-50 border-2 border-blue-100 overflow-hidden">
+                                <img src="" alt="Teacher Name" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-black text-blue-900"> Kaushal Kishore Thakur </h4>
+                            <p class="text-blue-600 font-bold text-sm uppercase mb-3">Head of Science</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Specialist in Physics and Practical Research.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm text-center p-6 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="w-32 h-32 mx-auto mb-4 rounded-2xl bg-blue-50 border-2 border-blue-100 overflow-hidden">
+                                <img src="" alt="Teacher Name" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-black text-blue-900">Mr. Durgesh Kumar </h4>
+                            <p class="text-blue-600 font-bold text-sm uppercase mb-3">English Lit.</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Fostering communication and creative writing.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm text-center p-6 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="w-32 h-32 mx-auto mb-4 rounded-2xl bg-blue-50 border-2 border-blue-100 overflow-hidden">
+                                <img src="" alt="Teacher Name" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-black text-blue-900"> Vishal Kumar Singh</h4>
+                            <p class="text-blue-600 font-bold text-sm uppercase mb-3">Digital Arts</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">Expert in modern design and traditional arts.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-12 text-center">
+                        <p class="text-gray-500 italic text-sm">Our school maintains a 1:25 teacher-student ratio for personalized attention.</p>
+                    </div>
+                </div>
+
+    <footer class="bg-gray-900 text-gray-500 py-12 text-center w-full">
+        <div class="centered-container px-6">
+            <p>© 2025 Apex Public School - Academic Division</p>
+        </div>
+    </footer>
+</main>
+ 
+ <main id="admission-section" class="page-section fade-in">
+    
+    <header class="bg-blue-900 text-white py-20 text-center w-full relative overflow-hidden">
+        <div class="centered-container relative z-10 px-6">
+            <h1 class="text-5xl font-black mb-4 uppercase tracking-tight">Join Our Family</h1>
+            <p class="text-xl text-blue-200 max-w-2xl mx-auto font-light">
+                Follow these simple steps to start your child's journey toward excellence.
+            </p>
+        </div>
+    </header>
+
+    <section class="section-spacing bg-white w-full">
+        <div class="centered-container px-6">
+            
+            <div class="bg-gray-50 border border-gray-200 rounded-[2.5rem] p-8 md:p-16 shadow-sm">
+                
+                <div class="mb-20">
+                    <h2 class="text-3xl font-black text-blue-900 text-center mb-12 uppercase">Steps to Admission</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden">
+                            <span class="absolute -top-4 -right-4 text-7xl font-black text-blue-50 opacity-10">01</span>
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-black mb-6 shadow-lg">1</div>
+                            <h4 class="text-xl font-bold text-blue-900 mb-3">Registration</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Fill out the detailed admission inquiry form provided below with accurate information.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden">
+                            <span class="absolute -top-4 -right-4 text-7xl font-black text-blue-50 opacity-10">02</span>
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-black mb-6 shadow-lg">2</div>
+                            <h4 class="text-xl font-bold text-blue-900 mb-3">Verification</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Your request will be sent to our Administrator for review and processing.</p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden">
+                            <span class="absolute -top-4 -right-4 text-7xl font-black text-blue-50 opacity-10">03</span>
+                            <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-black mb-6 shadow-lg">3</div>
+                            <h4 class="text-xl font-bold text-blue-900 mb-3">Evaluation</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">Within a week, the Administrator will contact you to schedule a small online test.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto bg-white border border-gray-200 rounded-[2rem] p-8 md:p-12 shadow-xl">
+                    <div class="text-center mb-10">
+                        <h3 class="text-2xl font-black text-blue-900">Admission Inquiry Form</h3>
+                        <p class="text-gray-500 text-sm mt-2">Please provide the student's details for our records.</p>
+                    </div>
+
+                 <form id="admissionForm" action="#" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="col-span-2">
+        <h5 class="font-bold text-blue-900 border-b pb-2 mb-2">Student Information</h5>
+    </div>
+    
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Student's Full Name</label>
+        <input type="text" required placeholder="Enter name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+    </div>
+
+    <div class="col-span-1 relative"> <label class="block text-sm font-bold text-gray-700 mb-2">Date of Birth</label>
+    
+    <div class="relative group"> <input 
+            type="text" 
+            id="dobInput"
+            name="dob"
+            placeholder="DD / MM / YYYY"
+            maxlength="14"
+            onkeyup="formatDate(this)"
+            class="w-full pl-4 pr-12 py-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-green-500 focus:bg-white outline-none transition-all font-mono"
+        >
+
+        <input type="date" id="hiddenDatePicker" class="absolute opacity-0 w-0 h-0" onchange="syncDate(this)">
+        
+        <button type="button" 
+            onclick="document.getElementById('hiddenDatePicker').showPicker()" 
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-green-600">
+            <i class="fas fa-calendar-alt text-xl"></i>
+        </button>
+    </div>
+</div>
+
+    <script>
+function formatDOB(input) {
+    let v = input.value.replace(/\D/g, '').slice(0, 8);
+    if (v.length >= 5) {
+        input.value = `${v.slice(0, 2)} / ${v.slice(2, 4)} / ${v.slice(4)}`;
+    } else if (v.length >= 3) {
+        input.value = `${v.slice(0, 2)} / ${v.slice(2)}`;
+    } else {
+        input.value = v;
+    }
+}
+
+// Sync hidden calendar pick to the text box
+function syncDate(picker) {
+    const date = new Date(picker.value);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    document.getElementById('dobInput').value = `${day} / ${month} / ${year}`;
+}
+</script>
+
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Gender</label>
+        <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Prefer not to say</option>
+        </select>
+    </div>
+
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Class Applying For</label>
+        <select id="classSelect" onchange="togglePreviousSchool()" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+            <option value="primary">Class 1 - 10</option>
+            <option value="nursery">Nursery / LKG / UKG</option>
+        </select>
+    </div>
+
+    <div class="col-span-2 mt-4">
+        <h5 class="font-bold text-blue-900 border-b pb-2 mb-2">Parent/Guardian Information</h5>
+    </div>
+
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Parent/Guardian Name</label>
+        <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+    </div>
+
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Relationship to Student</label>
+        <input maxlength="14" type="text" placeholder="e.g. Father, Mother" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+    </div>
+
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Mobile Number</label>
+        <input type="tel" required placeholder="+91" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+    </div>
+
+    <div class="col-span-1">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+        <input type="email" required placeholder="example@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+    </div>
+
+    <div class="col-span-2">
+        <label class="block text-sm font-bold text-gray-700 mb-2">Residential Address</label>
+        <textarea rows="2" placeholder="Street, City, State, Zip" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition"></textarea>
+    </div>
+
+    <div id="previousSchoolSection" class="col-span-2 mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="col-span-2">
+            <h5 class="font-bold text-blue-900 border-b pb-2 mb-2">Previous School Details</h5>
+        </div>
+        <div class="col-span-1">
+            <label class="block text-sm font-bold text-gray-700 mb-2">Name of Previous School</label>
+            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+        </div>
+        <div class="col-span-1">
+            <label class="block text-sm font-bold text-gray-700 mb-2">Reason for Leaving</label>
+            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none transition">
+        </div>
+    </div>
+
+    <div class="col-span-2 mt-6">
+        <button type="submit" class="w-full bg-blue-900 text-white font-black py-4 rounded-xl hover:bg-blue-800 shadow-lg transition-all uppercase tracking-widest">
+            Submit Request
+        </button>
+    </div>
+</form>
+
+<div id="successMessage" class="hidden text-center p-12 bg-white rounded-[2rem] shadow-2xl">
+    <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+        <i class="fas fa-paper-plane text-3xl"></i>
+    </div>
+    <h3 class="text-3xl font-black text-blue-900 mb-4">Request Sent!</h3>
+    <p class="text-gray-600 text-lg">Your request has been sent to the Administrator. We will contact you shortly.</p>
+</div>
+
+<script>
+    function togglePreviousSchool() {
+        const classVal = document.getElementById('classSelect').value;
+        const section = document.getElementById('previousSchoolSection');
+        section.style.display = (classVal === 'nursery') ? 'none' : 'grid';
+    }
+
+    document.getElementById('admissionForm').onsubmit = function(e) {
+        e.preventDefault(); // Stop page reload
+        this.classList.add('hidden'); // Hide form
+        document.getElementById('successMessage').classList.remove('hidden'); // Show success page
+        window.scrollTo(0, 0); // Scroll to top to see message
+    };
+</script>
+
+
+                </div>
+
+                <div class="mt-12 text-center text-gray-500 text-sm italic">
+                    <p>* Please ensure all details are correct before submitting. The admission test link will be shared via email/WhatsApp.</p>
+                </div>
+
+            </div> </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-500 py-10 text-center w-full">
+        <div class="centered-container px-6">
+            <p>© 2025 Apex Public School Admission Office</p>
+        </div>
+    </footer>
+</main>
+
+<main id="login-section" class="page-section">
+    <div c
+        <div class="w-full max-w-5xl bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col md:flex-row h-auto md:h-[750px] fade-in border border-gray-100">
+            
+            <div class="w-full md:w-5/12 bg-blue-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-800 rounded-full -mr-32 -mt-32 opacity-50"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-graduation-cap text-blue-900 text-3xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-black tracking-tight uppercase">Apex Public School Portal</h2>
+                    </div>
+                    <h3 class="text-4xl font-bold leading-tight mb-4">Empowering the <span class="text-yellow-400">Next Generation</span></h3>
+                    <p class="text-blue-100 text-lg font-light">Select your role and enter your credentials to access your personalized dashboard.</p>
+                </div>
+
+                <div class="relative z-10 mt-8">
+                    <div class="flex items-center gap-3 bg-blue-800/50 p-4 rounded-2xl border border-blue-700">
+                        <i class="fas fa-info-circle text-yellow-400"></i>
+                        <p class="text-xs text-blue-100">New Admission? Contact the administration office for portal access keys.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-7/12 p-8 md:p-16 bg-white flex flex-col justify-center">
+                
+                <div class="mb-10">
+                    <label class="block text-sm font-black text-blue-900 uppercase tracking-widest mb-4 text-center">I am a...</label>
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        <button type="button" onclick="setRole('Student', 'blue')" class="role-btn active p-3 rounded-2xl border-2 border-blue-100 flex flex-col items-center gap-2 transition-all hover:border-blue-500">
+                            <i class="fas fa-user-graduate text-xl"></i>
+                            <span class="text-[10px] font-bold uppercase">Student</span>
+                        </button>
+                        <button type="button" onclick="setRole('Teacher', 'green')" class="role-btn p-3 rounded-2xl border-2 border-blue-100 flex flex-col items-center gap-2 transition-all hover:border-green-500">
+                            <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            <span class="text-[10px] font-bold uppercase">Teacher</span>
+                        </button>
+                        <button type="button" onclick="setRole('Parent', 'orange')" class="role-btn p-3 rounded-2xl border-2 border-blue-100 flex flex-col items-center gap-2 transition-all hover:border-orange-500">
+                            <i class="fas fa-users text-xl"></i>
+                            <span class="text-[10px] font-bold uppercase">Parent</span>
+                        </button>
+                        <button type="button" onclick="setRole('Admin', 'red')" class="role-btn p-3 rounded-2xl border-2 border-blue-100 flex flex-col items-center gap-2 transition-all hover:border-red-500">
+                            <i class="fas fa-user-shield text-xl"></i>
+                            <span class="text-[10px] font-bold uppercase">Admin</span>
+                        </button>
+                    </div>
+                </div>
+    <form id="loginForm" method="POST"
+    onsubmit="return validateLogin(event)">
+
+                    <input type="hidden" id="userRole" name="role" value="Student">
+                    
+                    <div>
+                        <div class="relative group">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 group-focus-within:text-blue-600">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email" name="email" required placeholder="Email Address" 
+                                class="w-full pl-12 pr-4 py-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-blue-600 focus:bg-white outline-none transition-all">
+                        </div>
+                    </div>
+
+                  <div>
+    <div class="relative group">
+        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 group-focus-within:text-blue-600">
+            <i class="fas fa-lock"></i>
+        </span>
+        
+        <input id="passwordInput" name="password" type="password" required placeholder="Password" 
+            class="w-full pl-12 pr-12 py-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-blue-600 focus:bg-white outline-none transition-all">
+        
+        <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-blue-600 transition-colors">
+            <i id="eyeIcon" class="fas fa-eye-slash"></i>
+        </button>
+    </div>
+</div>
+
+
+                    <div class="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                        <div class="flex items-center justify-between mb-3">
+                            <div id="captchaBox" class="bg-slate-800 text-white font-mono text-xl tracking-[0.4em] px-4 py-2 rounded-lg italic line-through decoration-yellow-400 select-none"></div>
+                            <button type="button" onclick="generateCaptcha()" class="text-blue-600 hover:rotate-180 transition-transform duration-500">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <input maxlength="6" type="tel" id="captchaInput" name="captcha" required placeholder="Enter security code" 
+                            class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 outline-none focus:border-blue-600 uppercase text-center font-bold">
+                    </div>
+                    
+
+         <button type="submit" id="submitBtn" class="w-full bg-blue-900 text-white font-black py-4 rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all uppercase tracking-widest">
+                        Login as <span id="btnRoleText">Student</span>
+                    </button>
+                    
+                    <div class="text-center">
+    <button type="button" onclick="switchPage('forgot')" class="text-sm font-bold text-gray-400 hover:text-blue-900 transition">Forgot credentials?</button>
+</div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section id="forgot-section" class="hidden min-h-screen flex items-start justify-center bg-slate-100 pt-10 pb-12 px-4">
+
+
+     <div class="w-full max-w-2xl bg-white rounded-[3rem] shadow-2xl p-8 md:p-16 border border-gray-100 relative">
+           <button type="button" onclick="switchPage('login')" class="absolute top-8 right-8 text-gray-400 hover:text-red-600 transition-all z-50">
+            <i class="fas fa-times-circle text-3xl"></i>
+        </button>
+        <div class="text-center mb-10">
+            <div class="inline-flex p-4 bg-green-50 rounded-2xl mb-4">
+                <i class="fas fa-user-shield text-green-600 text-3xl"></i>
+            </div>
+            <h2 class="text-3xl font-black text-blue-900 uppercase">Account Recovery</h2>
+            <p class="text-gray-500 mt-2">Verify your identity to recover access.</p>
+        </div>
+
+        <form class="space-y-5">
+            <input type="email" required placeholder="Enter Email" class="w-full px-6 py-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-green-500 focus:bg-white outline-none transition-all">
+            <input type="tel" required placeholder="Enter Mobile Number" class="w-full px-6 py-4 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-green-500 focus:bg-white outline-none transition-all">
+            <div class="relative group">
+    <span class="absolute top-4 left-4 text-gray-400 group-focus-within:text-green-600">
+        <i class="fas fa-calendar-alt"></i>
+    </span>
+    <label class="absolute left-12 top-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest">Date of Birth</label>
+    
+    <input 
+        type="text" 
+        id="dobInput"
+        name="dob"
+        placeholder="DD / MM / YYYY"
+        maxlength="14"
+        onkeyup="formatDate(this)"
+        class="w-full pl-12 pr-12 pt-7 pb-3 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-green-500 focus:bg-white outline-none transition-all font-mono"
+    >
+
+    <input type="date" id="hiddenDatePicker" class="absolute opacity-0 w-0 h-0" onchange="syncDate(this)">
+    <button type="button" onclick="document.getElementById('hiddenDatePicker').showPicker()" class="absolute right-4 top-8 text-gray-400 hover:text-green-600">
+        <i class="fas fa-calendar-day text-lg"></i>
+    </button>
+</div>
+
+
+            
+            <button type="submit" class="w-full bg-green-600 text-white font-black py-4 rounded-2xl hover:bg-green-700 transition-all uppercase tracking-widest">
+                Submit Request
+            </button>
+
+            <button type="button" onclick="switchPage('login')" class="w-full text-sm font-bold text-blue-900 hover:underline mt-4">Back to Login</button>
+        </form>
+    </div>
+</section>
+
+<script>function switchPage(page) {
+    const login = document.getElementById('login-section');
+    const forgot = document.getElementById('forgot-section');
+
+    if (page === 'forgot') {
+        // 1. Reveal the forgot section first
+        forgot.classList.remove('hidden');
+        
+        // 2. Delay slightly to allow the browser to register the new element position
+        setTimeout(() => {
+            forgot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 20);
+
+        // 3. Hide login after scroll starts
+        setTimeout(() => { login.classList.add('hidden'); }, 600);
+    } else {
+        login.classList.remove('hidden');
+        setTimeout(() => {
+            login.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 20);
+        setTimeout(() => { forgot.classList.add('hidden'); }, 600);
+    }
+}
+
+
+</script>
+<script>// Auto-format typing: Adds slashes while user writes
+function formatDate(input) {
+    let v = input.value.replace(/\D/g, '').slice(0, 8);
+    if (v.length >= 5) {
+        input.value = `${v.slice(0, 2)} / ${v.slice(2, 4)} / ${v.slice(4)}`;
+    } else if (v.length >= 3) {
+        input.value = `${v.slice(0, 2)} / ${v.slice(2)}`;
+    } else {
+        input.value = v;
+    }
+}
+
+// Sync hidden calendar pick to the text box
+function syncDate(picker) {
+    const date = new Date(picker.value);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    document.getElementById('dobInput').value = `${day} / ${month} / ${year}`;
+}
+</script>
+<script>
+// Logic to show/hide password
+function togglePasswordVisibility() {
+    const passInput = document.getElementById('loginPassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+    if (passInput.type === 'password') {
+        passInput.type = 'text';
+        eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+        passInput.type = 'password';
+        eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+}
+
+// Logic to switch between Login and Forgot pages
+function switchPage(page) {
+    const login = document.getElementById('login-section');
+    const forgot = document.getElementById('forgot-section');
+    if (page === 'forgot') {
+        login.classList.add('hidden');
+        forgot.classList.remove('hidden');
+    } else {
+        forgot.classList.add('hidden');
+        login.classList.remove('hidden');
+    }
+}
+</script>
+
+<style>
+    /* Add this to your <style> tag */
+    .role-btn.active {
+        background-color: #f0f7ff;
+        border-color: #1e40af;
+        color: #1e40af;
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+</style>
+<script>function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('passwordInput');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    if (passwordInput.type === 'password') {
+        // Switch to visible
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    } else {
+        // Switch to hidden
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    }
+}
+</script>
+
+<script>
+    // New Function to handle Role Switching
+    function setRole(role, color) {
+        document.getElementById('userRole').value = role;
+        document.getElementById('btnRoleText').innerText = role;
+        
+        // Remove active class from all
+        document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        event.currentTarget.classList.add('active');
+        
+        // Change button color based on role
+        const btn = document.getElementById('submitBtn');
+        const colors = {
+            blue: '#1e40af',
+            green: '#15803d',
+            orange: '#c2410c',
+            red: '#b91c1c'
+        };
+        btn.style.backgroundColor = colors[color];
+    }
+</script>
+<script>    // 1. Generate Captcha Numbers
+    function generateCaptcha() {
+        const chars = "0123456789"; // Only numbers as requested
+        let captcha = "";
+        for (let i = 0; i < 6; i++) {
+            captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        
+        const box = document.getElementById('captchaBox');
+        if (box) {
+            box.innerText = captcha;
+            box.setAttribute('data-val', captcha); // Store for validation
+        }
+    }
+    function validateLogin(e) {
+    const userInput = document.getElementById('captchaInput').value;
+    const realCaptcha = document.getElementById('captchaBox').getAttribute('data-val');
+
+    if (userInput !== realCaptcha) {
+        alert("❌ Invalid Security Code!");
+        generateCaptcha();
+        e.preventDefault(); // फॉर्म को रुकने दें
+        return false;
+    }
+    return true; // कैप्चा सही है, अब PHP काम करेगा
+}
+
+    // 2. Role Switcher
+    function setRole(role, color) {
+        document.getElementById('userRole').value = role;
+        document.getElementById('btnRoleText').innerText = role;
+        
+        document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
+        const btn = document.getElementById('submitBtn');
+        const colors = { blue: '#1e40af', green: '#15803d', orange: '#c2410c', red: '#b91c1c' };
+        btn.style.backgroundColor = colors[color];
+        
+        generateCaptcha(); // Refresh captcha on role change
+    }
+
+    // 3. Login Validation
+    function validateLogin(e) {
+        e.preventDefault();
+        const userInput = document.getElementById('captchaInput').value;
+        const realCaptcha = document.getElementById('captchaBox').getAttribute('data-val');
+
+        if (userInput !== realCaptcha) {
+            alert("❌ Invalid Security Code! Please try again.");
+            generateCaptcha();
+            document.getElementById('captchaInput').value = "";
+            return false;
+        }
+
+        alert("✅ Success! Logging in as " + document.getElementById('userRole').value);
+        return true;
+    }
+
+    // 4. Force run on load
+    document.addEventListener('DOMContentLoaded', generateCaptcha);
+    
+    // Also run if the section is revealed via your navigation menu
+    // (Add this inside your existing nav click listener if numbers still don't show)
+</script>
+
+
+
+    <script>
+    const tabs = document.querySelectorAll('.nav-tab');
+    const sections = document.querySelectorAll('.page-section');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('data-target');
+            
+            // Only run if the tab has a data-target (skips Login button)
+            if (targetId) {
+                e.preventDefault();
+
+                // 1. Remove 'active' class from all tabs and add to clicked one
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // 2. Hide ALL sections first
+                sections.forEach(sec => {
+                    sec.classList.remove('active-content');
+                    sec.style.display = 'none'; 
+                });
+
+                // 3. Show only the targeted section
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active-content');
+                    targetSection.style.display = 'block';
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
